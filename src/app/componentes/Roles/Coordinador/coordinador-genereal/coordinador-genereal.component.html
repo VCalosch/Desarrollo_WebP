@@ -1,0 +1,156 @@
+<div class="container top-container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#EscogerPlaya" role="tab" aria-controls="home" aria-selected="true">Escoger Playa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#SolicitarNuevaPlaya" role="tab" aria-controls="home" aria-selected="true">Solicitar una Nueva Playa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#DarAltaNuevoUsuario" role="tab" aria-controls="profile" aria-selected="false">Dar de Alta a un Nuevo Usuario</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <!--Escoger Playa-->
+      <div class="tab-pane fade show active" id="EscogerPlaya" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card">
+              <div class="card-body Margenes">
+
+                  <form class="form-row">
+                    <div class="col"></div>
+                    <div class="col-auto"><h1>En Progreso...</h1></div>
+                    <div class="col"></div>
+                  </form>
+              </div>
+            </div>
+      </div>
+        <!--Solicitar una Nueva Playa-->
+      <div class="tab-pane fade" id="SolicitarNuevaPlaya" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card">
+              <div class="card-body Margenes">
+
+                  <form class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Nombre de la Playa">
+                      </div>
+                      <div class="col">
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Correo Electronico">
+                      </div>
+                  </form>
+
+                  <br>
+
+                  <form class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Latitud">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Longitud">
+                      </div>
+                      <div class="col">
+                        <button type="submit" class="btn btn-primary btn-block">Mapa</button>
+                      </div>
+                  </form>
+
+                  <br>
+
+                  <div class="form-row">
+                    <label for="exampleFormControlTextarea1">Comentarios:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <br>
+                  <form class="form-row">
+
+                    <div class="col"></div>
+                    <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-lg">Enviar Solicitud</button></div>
+                    <div class="col"></div>
+
+                  </form>
+
+              </div>
+            </div>
+      </div>
+        <!--Dar de Alta a un nuevo Usuario-->
+      <div class="tab-pane fade" id="DarAltaNuevoUsuario" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card">
+              <div class="card-body Margenes">
+
+                <form class="form-row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Nombre de Usuario">
+                    </div>
+                    <div class="col">
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
+                    <div class="col">
+                      <select id="inputState" class="form-control">
+                        <option selected disabled>Rol de Usuario</option>
+                        <option>Encargado de Playa</option>
+                        <option>Socorrista</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <select id="inputState" class="form-control">
+                        <option selected disabled>Sexo</option>
+                        <option>Hombre</option>
+                        <option>Mujer</option>
+                        <option>Otro</option>
+                      </select>
+                    </div>
+                </form>
+                <br>
+
+                <form class="form-row">
+                    <div class="col">
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Correo Electronico">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Codigo">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Inicio Contrato - Ej: 21/01/2018">
+                    </div>
+                </form>
+
+                <br>
+
+                <div class="form-row">
+                  <label for="exampleFormControlTextarea1">Formacion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <br>
+
+                <div class="form-row">
+                  <label for="exampleFormControlTextarea1">Experiencia:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <br>
+
+                <div class="form-row">
+                  <label for="exampleFormControlTextarea1">Comentarios:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <br>
+
+                <form class="form-row">
+                  <div class="col"></div>
+                  <div class="col-auto"><button type="submit" class="btn btn-primary btn-lg">Registrar</button></div>
+                  <div class="col"></div>
+                </form>
+
+
+              </div>
+            </div>
+
+      </div>
+
+
+                  </div>
+
+
+
+  </div>

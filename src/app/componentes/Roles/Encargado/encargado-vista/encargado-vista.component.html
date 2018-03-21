@@ -1,0 +1,114 @@
+<div class="container top-container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#DarAltaSocorrista" role="tab" aria-controls="home" aria-selected="true">Dar de Alta a un Socorrista</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#RegistrarPeligro" role="tab" aria-controls="profile" aria-selected="false">Registrar un Peligro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#ModificarSuceso" role="tab" aria-controls="profile" aria-selected="false">Modificar Suceso</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#DarBajaSocorrista" role="tab" aria-controls="profile" aria-selected="false">Dar de Baja a un Socorrista</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+
+        <!--Dar de Alta a un Socorrista-->
+      <div class="tab-pane fade show active" id="DarAltaSocorrista" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card">
+              <div class="card-body Margenes">
+                <div class="form-row">
+                  <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la Playa"></div>
+                  <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la Playa"></div>
+                  <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre de la Playa"></div>
+                </div>
+                <br>
+                <div class="form-row">
+                  <div class="col"></div>
+                  <div class="col-auto"><button class="btn btn-primary" type="submit">Registrar</button></div>
+                  <div class="col"></div>
+                </div>
+              </div>
+            </div>
+      </div>
+        <!--Registrar un Peligro-->
+      <div class="tab-pane fade" id="RegistrarPeligro" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card">
+              <div class="card-body Margenes">
+                <div class="form-row">
+                  <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Peligro"></div>
+                  <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ubicación"></div>
+                </div>
+                <br>
+                <div class="form-row">
+                  <div class="col"></div>
+                  <div class="col-auto"><button class="btn btn-primary" type="submit">Registrar</button></div>
+                  <div class="col"></div>
+                </div>
+              </div>
+            </div>
+
+      </div>
+        <!--Modificar Suceso-->
+      <div class="tab-pane fade" id="ModificarSuceso" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card">
+                  <div class="card-body Margenes">
+                    <div class="row"></div>
+                      <p>En este Panel se deben mostrar los sucessos generados con anterioridad</p><br>
+                      <p>Al hacer click en uno de ellos, debe mostrarse las opciones de modificacion</p>
+                  </div>
+                </div>
+
+      </div>
+        <!--Dar de baja a un Socorrista-->
+      <div class="tab-pane fade" id="DarBajaSocorrista" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="card">
+                      <div class="card-body Margenes">
+                          <div class="form-row">
+                            <div class="col-4"></div>
+                            <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Introducir Nombre de Usuario"></div>
+                            <div class="col-4"></div>
+                          </div>
+                          <br>
+                          <div class="form-row">
+                            <div class="col"></div>
+                            <div class="col"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Eliminar</button></div>
+                            <div class="col"></div>
+                          </div>
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+  <script>
+                  $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+              })
+            </script>
+
+                  <!--MODAL-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">¿Estas Seguro?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Una vez eliminado, no podras recuperarlo.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal">Eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  </div>
