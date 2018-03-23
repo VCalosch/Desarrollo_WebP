@@ -15,9 +15,9 @@
                           <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
 
                               <!--Modificar Playa: Paso #1-->
-                          <form>
-                              <div class="form-row">
-                                  <div class="col"><input class="form-control" type="text" placeholder="Municipio"></div>
+                          <form (ngSubmit)="guardarDatos(Paso1)" #Paso1="ngForm">
+                              <div class="form-row" >
+                                  <div class="col"><input class="form-control" type="text" placeholder="Municipio" [ngClass]="{ 'is-invalid': (Municipio.errors?.required) && Municipio.touched }" name="Municipio" [(ngModel)]="Paso1.Municipio" required #Municipio="ngModel"></div>
                                   <div class="col"><input class="form-control" type="text" placeholder="Provincia"></div>
                                   <div class="col"><input class="form-control" type="text" placeholder="CC AA:"></div>
                               </div>
@@ -32,7 +32,7 @@
                               <div class="form-row">
                                   <div class="col"></div>
                                   <!--<div class="col"><button type="button" class="btn btn-primary">ATRAS</button></div>-->
-                                  <div class="col-auto"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                  <div class="col-auto"><button type="button" class="btn btn-primary" [disabled]="!Paso1.valid">Siguiente</button></div>
                                   <div class="col"></div>
                               </div>
                           </form><br>

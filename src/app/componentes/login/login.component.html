@@ -6,19 +6,48 @@
   <div class="col">-->
     <div class="card align-self-center">
   <div class="card-body">
-  <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Correo Electrónico:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Contraseña:</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        <button type="button" class="btn btn-link">¿Haz olvidado tu contraseña?</button>
-      </div>
+  <form (ngSubmit)="guardarDatos(forms)" #forms="ngForm">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico:</label>
+                <input type="email" class="form-control" placeholder="E-mail" [ngClass]="{ 'is-invalid': (email.errors?.required) && email.touched }"
+                type="text"
+                name="email"
+                [(ngModel)]="login.email"
+                minlenght="5"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                #email="ngModel"><!--La variable local hace referencia al form control-->
 
-      <button type="submit" class="btn btn-primary btn-block ">Entrar</button>
+                <div *ngIf="email.errors?.required" class="invalid-feedback">
+                  Este campo es requerido
+                </div>
+
+
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña:</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [ngClass]="{ 'is-invalid': (password.errors?.required) && password.touched }"
+                name="password"
+                [(ngModel)]="login.password"
+                pattern=".{5,}"
+                required
+                #password="ngModel"><!--La variable local hace referencia al form control-->
+
+                <div *ngIf="password.errors?.required" class="invalid-feedback">
+                  Este campo es requerido
+                </div>
+
+                <button type="button" class="btn btn-link">¿Haz olvidado tu contraseña?</button>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!forms.valid">Entrar</button>
   </form>
+  <br>
+  <pre>
+  {{login | json}}
+</pre>
+
+
   </div>
 </div>
 
