@@ -1,0 +1,21 @@
+  <form (ngSubmit)="guardar(forma)" #forma="ngForm">
+  <div class="form-row top-container">
+      <div class="col">
+          <select [(ngModel)]="condiciones.probabilidad" name="probabilidad" class="form-control">
+            <option value="" disabled>Probabilidad</option>
+            <option *ngFor="let x of variables" [value]="x.var" >
+              {{x.var}}
+            </option>
+          </select>
+      </div>
+      <div class="col">
+        <select [(ngModel)]="condiciones.severidad" name="severidad" class="form-control">
+          <option value="" disabled>Severidad</option>
+          <option *ngFor="let x of variables" [value]="x.var">
+            {{x.var}}
+          </option>
+        </select>
+      </div>
+      <div class="col"><input class="form-control" type="text" placeholder="" disabled></div>
+  </div>
+</form>

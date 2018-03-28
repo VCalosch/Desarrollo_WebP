@@ -19,6 +19,7 @@ import { EncargadoVistaComponent } from './componentes/Roles/Encargado/encargado
 import { CoordinadorGenerealComponent } from './componentes/roles/coordinador/coordinador-genereal/coordinador-genereal.component';
 import { CoordinadorVistaComponent } from './componentes/Roles/Coordinador/coordinador-vista/coordinador-vista.component';
 import { SocorristaVistaComponent } from './componentes/Roles/Socorrista/socorrista-vista/socorrista-vista.component';
+import { PruebaComponent } from './componentes/prueba/prueba.component';
 
 
 
@@ -35,6 +36,7 @@ import { SocorristaVistaComponent } from './componentes/Roles/Socorrista/socorri
     CoordinadorGenerealComponent,
     CoordinadorVistaComponent,
     SocorristaVistaComponent,
+    PruebaComponent,
 
 
   ],

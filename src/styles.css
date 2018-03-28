@@ -1,3 +1,4 @@
+
 *{
   margin: 0;
   padding: 0;
@@ -13,14 +14,6 @@ body {
     position:relative;
     padding-bottom:[footer-height]
 }
-/*#footer {
-    position: absolute;
-    left: 0 ; right: 0; bottom: 0;
-    height:[footer-height]
-}*/
-
-
-
 
 /*Footer*/
 #navlist li {
@@ -66,8 +59,8 @@ body{
 
 /*Margenes para Roles Generales*/
 .Margenes{margin-top: 60px; margin-bottom: 60px; margin-left: 40px; margin-right: 40px;}
-
-
+.MargenesJump{margin-left: 250px; margin-right: 250px;}
+/**/
 .EsquemaMapa{
   width: auto;
   height: 300px;

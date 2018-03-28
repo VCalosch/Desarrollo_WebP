@@ -482,8 +482,14 @@
 
                   <div class="form-row">
                     <div class="col">
-                        <select class="form-control">
+                        <!--<select class="form-control">
                           <option disabled selected>Riesgo</option>
+                        </select>-->
+                        <select [(ngModel)]="Riesgo.riesgo" name="probabilidad" class="form-control">
+                          <option value="" disabled>Riesgo</option>
+                          <option *ngFor="let x of Riesgos" [value]="x" >
+                            {{x}}
+                          </option>
                         </select>
                     </div>
                     <div class="col">
@@ -497,29 +503,41 @@
                   <div class="jumbotron jumbotron-fluid">
                   <div class="form-row">
                     <div class="col"></div>
-                    <div class="col">
-                        <select class="form-control" [(ngModel)]="Situacion" name="Situacion">
+                    <div class="col-auto">
+                        <!--<select class="form-control" [(ngModel)]="Situacion" name="Situacion">
                           <option disabled selected>Situacion</option>
                           <option value="yesSituacion">Si</option>
                           <option value="noSituacion">No</option>
-                        </select>
+                        </select>-->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" name="Situacion" [(ngModel)]="Situacion.Existe">
+                          <label class="custom-control-label" for="customCheck1">Agregar Situación</label>
+                        </div>
+
                     </div>
                     <div class="col"></div>
                   </div>
                   <br>
-                  <div *ngIf="Situacion === 'yesSituacion'">
+                  <div *ngIf="Situacion.Existe">
                                 <!--Viento-->
                                 <div class="form-row">
-                                <div class="col-5"></div>
-                                      <div class="col"><select class="form-control" [(ngModel)]="Viento" name="Viento">
+                                <div class="col"></div>
+                                      <div class="col-auto">
+                                        <!--<select class="form-control" [(ngModel)]="Viento" name="Viento">
                                         <option disabled selected>Viento</option>
                                         <option value="yesViento">Si</option>
                                         <option value="noViento">No</option>
-                                      </select></div>
-                                <div class="col-5"></div>
+                                      </select>-->
+                                      <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Viento" [(ngModel)]="Situacion.Viento">
+                                        <label class="form-check-label" for="exampleCheck1">Viento</label>
+                                      </div>
+                                    </div>
+                                <div class="col"></div>
                               </div>
-                                <br>
-                                <div class="form-row" *ngIf="Viento === 'yesViento'">
+                              <br>
+                                <div class="form-row MargenesJump" *ngIf="Situacion.Viento">
+
                                     <div class="col">
                                         <select class="form-control">
                                           <option disabled selected>Nudos</option>
@@ -560,20 +578,28 @@
                                           <option>Cualquier Direccion()</option>
                                         </select>
                                     </div>
+
                                   </div>
-                                <br>
+                                  <br>
                                   <!--Oleaje-->
                                 <div class="form-row">
-                                        <div class="col-5"></div>
-                                              <div class="col"><select class="form-control" [(ngModel)]="Oleaje" name="Oleaje">
+                                        <div class="col"></div>
+                                              <div class="col-auto">
+                                                <!--<select class="form-control" [(ngModel)]="Oleaje" name="Oleaje">
                                                 <option disabled selected>Oleaje</option>
                                                 <option value="yesOleaje">Si</option>
                                                 <option value="noOleaje">No</option>
-                                              </select></div>
-                                        <div class="col-5"></div>
+                                              </select>-->
+                                              <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Oleaje" [(ngModel)]="Situacion.Oleaje">
+                                                <label class="form-check-label" for="exampleCheck1">Oleaje</label>
+                                              </div>
+                                            </div>
+                                        <div class="col"></div>
                                 </div>
                                 <br>
-                                <div class="form-row" *ngIf="Oleaje === 'yesOleaje'">
+                                <div class="form-row MargenesJump" *ngIf="Situacion.Oleaje">
+
                                               <div class="col">
                                                   <select class="form-control">
                                                     <option disabled selected>Tipo</option>
@@ -611,20 +637,27 @@
                                                     <option>Cualquier Direccion()</option>
                                                   </select>
                                               </div>
+
                                             </div>
-                                <br>
+                                            <br>
                                     <!--Marea-->
                                 <div class="form-row">
-                                    <div class="col-5"></div>
-                                          <div class="col"><select class="form-control" [(ngModel)]="Marea" name="Marea">
+                                    <div class="col"></div>
+                                          <div class="col-auto">
+                                            <!--<select class="form-control" [(ngModel)]="Marea" name="Marea">
                                             <option disabled selected>Marea</option>
                                             <option value="yesMarea">Si</option>
                                             <option value="noMarea">No</option>
-                                          </select></div>
-                                    <div class="col-5"></div>
+                                          </select>-->
+                                          <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Marea" [(ngModel)]="Situacion.Marea">
+                                            <label class="form-check-label" for="exampleCheck1">Marea</label>
+                                          </div>
+                                        </div>
+                                    <div class="col"></div>
                                   </div>
                                 <br>
-                                <div class="form-row" *ngIf="Marea === 'yesMarea'">
+                                <div class="form-row MargenesJump" *ngIf="Situacion.Marea">
                                               <div class="col">
                                                   <select class="form-control">
                                                     <option disabled selected>Altura</option>
@@ -642,23 +675,27 @@
                                               </div>
                                             </div>
                               <br>
-                              <div class="form-row">
+                              <hr>
+                              <br>
+                              <div class="form-row MargenesJumpIn">
+
                                 <div class="col">
-                                    <select class="form-control">
-                                      <option disabled selected>Probabilidad</option>
-                                      <option>Baja</option>
-                                      <option>Media</option>
-                                      <option>Alta</option>
+                                    <select [(ngModel)]="condiciones.probabilidad" name="probabilidad" class="form-control">
+                                      <option value="" disabled>Probabilidad</option>
+                                      <option *ngFor="let x of variables" [value]="x.var" >
+                                        {{x.var}}
+                                      </option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select class="form-control">
-                                      <option disabled selected>Severidad</option>
-                                      <option>Baja</option>
-                                      <option>Media</option>
-                                      <option>Alta</option>
-                                    </select>
+                                  <select [(ngModel)]="condiciones.severidad" name="severidad" class="form-control">
+                                    <option value="" disabled>Severidad</option>
+                                    <option *ngFor="let x of variables" [value]="x.var">
+                                      {{x.var}}
+                                    </option>
+                                  </select>
                                 </div>
+
                                 <div class="col">
                                     <input class="form-control" type="text" placeholder="[Resultado]" disabled>
                                 </div>
@@ -683,8 +720,8 @@
             </div>
 
 
-
           </div>
           <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
     </div>
+
 </div>
