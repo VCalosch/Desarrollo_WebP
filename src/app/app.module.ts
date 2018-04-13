@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { APP_ROUTING } from './app.routes';
 
@@ -20,6 +20,7 @@ import { CoordinadorGenerealComponent } from './componentes/roles/coordinador/co
 import { CoordinadorVistaComponent } from './componentes/Roles/Coordinador/coordinador-vista/coordinador-vista.component';
 import { SocorristaVistaComponent } from './componentes/Roles/Socorrista/socorrista-vista/socorrista-vista.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
+import { ResetPasswordComponent } from './componentes/reset-password/reset-password.component';
 
 
 
@@ -37,13 +38,15 @@ import { PruebaComponent } from './componentes/prueba/prueba.component';
     CoordinadorVistaComponent,
     SocorristaVistaComponent,
     PruebaComponent,
+    ResetPasswordComponent,
 
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    APP_ROUTING
+    APP_ROUTING,
+    ReactiveFormsModule
   ],
   providers: [SelectsService],
   bootstrap: [AppComponent]

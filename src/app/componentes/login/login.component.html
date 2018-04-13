@@ -37,15 +37,13 @@
                   Este campo es requerido
                 </div>
 
-                <button type="button" class="btn btn-link">¿Haz olvidado tu contraseña?</button>
+                <button type="button" class="btn btn-link" [routerLink]="['/resetPassword']">¿Haz olvidado tu contraseña?</button>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block" [disabled]="!forms.valid">Entrar</button>
   </form>
   <br>
-  <pre>
-  {{login | json}}
-</pre>
+
 
 
   </div>

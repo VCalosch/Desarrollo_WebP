@@ -1,4 +1,4 @@
-  <form (ngSubmit)="guardar(forma)" #forma="ngForm">
+  <!--<form (ngSubmit)="guardar(forma)" #forma="ngForm">
   <div class="form-row top-container">
       <div class="col">
           <select [(ngModel)]="condiciones.probabilidad" name="probabilidad" class="form-control">
@@ -18,4 +18,56 @@
       </div>
       <div class="col"><input class="form-control" type="text" placeholder="" disabled></div>
   </div>
-</form>
+</form>-->
+
+
+<div class="form-row">
+  <div class="col"></div>
+  <div class="col-auto">
+  <p>Paso 1</p>
+  </div>
+  <div class="col"></div>
+</div>
+<br />
+
+<div [ngSwitch]="variable">
+  <div *ngSwitchCase="'0'">Paso1
+    <form (ngSubmit)="guardar(forma)" #forma="ngForm">
+      <div class="form-group row ">
+        <label class="col-2 col-form-label">Nombre</label>
+        <div class="col-8">
+
+          <input class="form-control"
+                 type="text"
+                 placeholder="Nombre"
+                 name="Nombre"
+                 [(ngModel)]="usuario.nombre"
+                 minlenght="5"
+                 required
+                 #nombre="ngModel"><!--La variable local hace referencia al form control-->
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!forma.valid" (click)="test()" >Siguiente</button>-->
+      <button type="submit" class="btn btn-primary" (click)="siguiente()" >Siguiente</button>-->
+    </form>
+
+
+
+  </div>
+  <div *ngSwitchCase="'1'">Paso2</div>
+  <div *ngSwitchCase="'2'">Paso3</div>
+  <div *ngSwitchCase="'3'">Paso4</div>
+  <div *ngSwitchCase="'4'">Paso5</div>
+
+</div>
+
+<div class="form-row">
+    <div class="col"></div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary" (click)="anterior()">Atras</button>
+        <button type="submit" class="btn btn-primary" (click)="siguiente()">Siguiente</button>
+    </div>
+    <div class="col"></div>
+</div>

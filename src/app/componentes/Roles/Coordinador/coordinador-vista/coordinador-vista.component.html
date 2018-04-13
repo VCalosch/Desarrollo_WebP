@@ -7,327 +7,184 @@
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Dar de Alta un Riesgo</a>
           </li>
     </ul>
+
     <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div class="tab-pane fade show active" id="EscogerPlaya" role="tabpanel" aria-labelledby="home-tab">
-                      <div class="card">
-                        <div class="card-body Margenes">
-                          <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="EscogerPlaya" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="card">
+                          <div class="card-body Margenes">
+                            <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
 
-                              <!--Modificar Playa: Paso #1-->
-                          <form (ngSubmit)="guardarDatos(Paso1)" #Paso1="ngForm">
-                              <div class="form-row" >
-                                  <div class="col"><input class="form-control" type="text" placeholder="Municipio" [ngClass]="{ 'is-invalid': (Municipio.errors?.required) && Municipio.touched }" name="Municipio" [(ngModel)]="Paso1.Municipio" required #Municipio="ngModel"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Provincia"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="CC AA:"></div>
-                              </div>
-                              <br>
-                              <div class="form-row">
-                                  <div class="col-1"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Anchura"></div>
-                                  <div class="col-1"></div>
-                              </div>
-                              <br>
-                              <div class="form-row">
-                                  <div class="col"></div>
-                                  <!--<div class="col"><button type="button" class="btn btn-primary">ATRAS</button></div>-->
-                                  <div class="col-auto"><button type="button" class="btn btn-primary" [disabled]="!Paso1.valid">Siguiente</button></div>
-                                  <div class="col"></div>
-                              </div>
-                          </form><br>
-                              <!--Modificar Playa: Paso #2-->
-                          <form>
-                              <div class="form-row">
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Pendiente</option>
-                                          <option>Ángulo Suave</option>
-                                          <option>Ángulo Normal</option>
-                                          <option>Pendiente Brusca</option>
-                                      </select>
-                                  </div>
-
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Grado de Ocupación</option>
-                                          <option>Alto</option>
-                                          <option>Medio</option>
-                                          <option>Suave</option>
-                                      </select>
-                                  </div>
-
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Grado de Urbanización</option>
-                                          <option>Rural</option>
-                                          <option>Salvaje</option>
-                                          <option>Urbano</option>
-                                      </select>
-                                  </div>
-                              </div>
-                              <br>
-                              <div class="form-row">
-                                <div class="col">
-                                    <textarea class="form-control" placeholder="Descripción de Playa" rows="3"></textarea>
-                                </div>
-                                <div class="col-4">
-                                  <div class="form-rows">
-                                    <select class="form-control">
-                                        <option disabled selected>Paseo Maritimo</option>
-                                        <option>Si</option>
-                                        <option>No</option>
-                                    </select>
-                                    <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-                                    <select class="form-control">
-                                        <option disabled selected>Fachada Litoral</option>
-                                        <option>Urbano</option>
-                                        <option>Industrial</option>
-                                        <option>Natural</option>
-                                        <option>Acantilado</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <br>
-                              <div class="form-row">
-                                  <div class="col"></div>
-                                  <div class="form-row">
-                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                      <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                                  </div>
-                                  <div class="col"></div>
-                              </div>
-                          </form><br>
-                              <!--Modificar Playa: Paso #3-->
-                          <form>
-                              <div class="form-row">
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Mofología</option>
-                                          <option>Arenosa</option>
-                                          <option>Rocosa</option>
-                                      </select>
-                                  </div>
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Composición</option>
-                                          <option>Arena</option>
-                                          <option>Grabilla</option>
-                                          <option>Grava</option>
-                                          <option>Bolos</option>
-                                      </select>
-                                  </div>
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Tipo Arena</option>
-                                          <option>Dorada</option>
-                                      </select>
-                                  </div>
-                              </div>
-                              <br>
-                              <div class="jumbotron jumbotron-fluid">
-                              <div class="form-row">
-                                    <div class="col"></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Zona Fondeo</b></label>
-                                    </div></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Nudismo</b></label>
-                                    </div></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Vegetación</b></label>
-                                    </div></div>
-                                    <div class="col"></div>
-                              </div>
-                              <div class="form-row">
-                                    <div class="col"></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Espacio Protegeido</b></label>
-                                    </div></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Actuaciones</b></label>
-                                    </div></div>
-                                    <div class="col"><div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" value="0">
-                                      <label class="form-check-label"><b>Bandera Azul</b></label>
-                                    </div></div>
-                                    <div class="col"></div>
-                              </div>
-                            </div>
-
-                              <div class="form-row">
-                                  <div class="col-1"></div>
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Tipo de Oleaje</option>
-                                          <option>Leve</option>
-                                          <option>Moderado</option>
-                                          <option>Fuerte</option>
-                                      </select>
-                                  </div>
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Nivel de Viento</option>
-                                          <option>Leve</option>
-                                          <option>Moderado</option>
-                                          <option>Fuerte</option>
-                                      </select>
-                                  </div>
-                                  <div class="col-1"></div>
-                              </div>
-                              <br>
-
-
-                              <div class="form-row">
-                                  <div class="col"></div>
-                                  <div class="form-row">
-                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                      <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                                  </div>
-                                  <div class="col"></div>
-                              </div>
-
-
-
-                          </form><br>
-                              <!--Modificar Playa: Paso #4-->
-                          <form>
-                              <div class="jumbotron jumbotron-fluid">
-                                  <div class="form-row">
-                                        <div class="col-1"></div>
-
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Peatonal</b></label>
-                                        </div></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Discapacitados</b></label>
-                                        </div></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Coche</b></label>
-                                        </div></div>
-
-                                        <div class="col-1"></div>
-                                  </div>
-                                  <div class="form-row">
-                                        <div class="col-1"></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Vehiculos de Emergencia</b></label>
-                                        </div></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Acceso Embarcaciones</b></label>
-                                        </div></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Acceso Helicopteros</b></label>
-                                        </div></div>
-                                        <div class="col-1"></div>
-                                  </div>
-                                  <div class="form-row">
-                                        <div class="col-1"></div>
-                                        <div class="col"><div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" value="0">
-                                          <label class="form-check-label"><b>Señalización de Accesos</b></label>
-                                        </div></div>
-                                        <div class="col-1"></div>
-                                  </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col"></div>
-                                <div class="form-row">
-                                    <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                    <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-
-                          </form><br>
-                              <!--Modificar Playa: Paso #5-->
-                          <form>
-
-                                <div class="row">
-                                  <div class="col">
-                                      <select class="form-control" [(ngModel)]="ss" name="AuxilioSalvamento">
-                                          <option disabled selected>Auxilio y Salvamento</option>
-                                          <option value="yes">Si</option>
-                                          <option value="no">No</option>
-                                      </select>
-                                  </div>
-
-                                  <div class="col">
-                                      <select class="form-control">
-                                          <option disabled selected>Período Auxulio</option>
-                                          <option>Anual</option>
-                                          <option>Estival</option>
-                                      </select>
-                                  </div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Hora Inicio: 09:00"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Hora Final: 18:00"></div>
+                                <!--Modificar Playa: Paso #1-->
+                            <form (ngSubmit)="guardarDatos(Paso1)" #Paso1="ngForm">
+                                <div class="form-row" >
+                                    <div class="col"><input class="form-control" type="text" placeholder="Municipio" [ngClass]="{ 'is-invalid': (Municipio.errors?.required) && Municipio.touched }" name="Municipio" [(ngModel)]="Paso1.Municipio" required #Municipio="ngModel"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Provincia"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="CC AA:"></div>
                                 </div>
                                 <br>
-                                  <div class="jumbotron jumbotron-fluid">
-                                      <div class="form-row">
-                                            <div class="col-1"></div>
-
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Señalización de Peligro</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Base de Socorrismo</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Base de Operaciones</b></label>
-                                            </div></div>
-                                            <div class="col-1"></div>
-                                      </div>
-                                      <div class="form-row">
-                                            <div class="col-1"></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Puesto de Vigilancia</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Banderas</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Carteles Informativos</b></label>
-                                            </div></div>
-                                            <div class="col-1"></div>
-                                      </div>
-                                      <div class="form-row">
-                                            <div class="col-1"></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Megafonía</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Balizamiento Terrestre</b></label>
-                                            </div></div>
-                                            <div class="col"><div class="form-check form-check-inline">
-                                              <input class="form-check-input" type="radio" value="0">
-                                              <label class="form-check-label"><b>Balizamiento Acuático</b></label>
-                                            </div></div>
-                                            <div class="col-1"></div>
-                                      </div>
+                                <div class="form-row">
+                                    <div class="col-1"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Anchura"></div>
+                                    <div class="col-1"></div>
                                 </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="col"></div>
+                                    <!--<div class="col"><button type="button" class="btn btn-primary">ATRAS</button></div>-->
+                                    <div class="col-auto"><button type="button" class="btn btn-primary" [disabled]="!Paso1.valid">Siguiente</button></div>
+                                    <div class="col"></div>
+                                </div>
+                            </form><br>
+                                <!--Modificar Playa: Paso #2-->
+                            <form>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Pendiente</option>
+                                            <option>Ángulo Suave</option>
+                                            <option>Ángulo Normal</option>
+                                            <option>Pendiente Brusca</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Grado de Ocupación</option>
+                                            <option>Alto</option>
+                                            <option>Medio</option>
+                                            <option>Suave</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Grado de Urbanización</option>
+                                            <option>Rural</option>
+                                            <option>Salvaje</option>
+                                            <option>Urbano</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control" placeholder="Descripción de Playa" rows="3"></textarea>
+                                  </div>
+                                  <div class="col-4">
+                                    <div class="form-rows">
+                                      <select class="form-control">
+                                          <option disabled selected>Paseo Maritimo</option>
+                                          <option>Si</option>
+                                          <option>No</option>
+                                      </select>
+                                      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+                                      <select class="form-control">
+                                          <option disabled selected>Fachada Litoral</option>
+                                          <option>Urbano</option>
+                                          <option>Industrial</option>
+                                          <option>Natural</option>
+                                          <option>Acantilado</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <br>
+                                <div class="form-row">
+                                    <div class="col"></div>
+                                    <div class="form-row">
+                                        <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
+                                        <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </form><br>
+                                <!--Modificar Playa: Paso #3-->
+                            <form>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Mofología</option>
+                                            <option>Arenosa</option>
+                                            <option>Rocosa</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Composición</option>
+                                            <option>Arena</option>
+                                            <option>Grabilla</option>
+                                            <option>Grava</option>
+                                            <option>Bolos</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Tipo Arena</option>
+                                            <option>Dorada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="jumbotron jumbotron-fluid">
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Zona Fondeo</b></label>
+                                      </div></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Nudismo</b></label>
+                                      </div></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Vegetación</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Espacio Protegeido</b></label>
+                                      </div></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Actuaciones</b></label>
+                                      </div></div>
+                                      <div class="col"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="0">
+                                        <label class="form-check-label"><b>Bandera Azul</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+                              </div>
+
+                                <div class="form-row">
+                                    <div class="col-1"></div>
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Tipo de Oleaje</option>
+                                            <option>Leve</option>
+                                            <option>Moderado</option>
+                                            <option>Fuerte</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Nivel de Viento</option>
+                                            <option>Leve</option>
+                                            <option>Moderado</option>
+                                            <option>Fuerte</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                                <br>
+
 
                                 <div class="form-row">
                                     <div class="col"></div>
@@ -338,59 +195,186 @@
                                     <div class="col"></div>
                                 </div>
 
-                          </form><br>
-                              <!--Modificar Playa: Paso #6-->
-                          <form>
-                            <div class="form-row">
-                                <div class="col"><input class="form-control" type="text" placeholder="Carretera más Proxima"></div>
-                            </div>
-                            <br>
-                            <div class="form-row">
-                              <div class="col">
-                                  <select class="form-control">
-                                      <option disabled selected>Aparcamiento</option>
-                                      <option>Si</option>
-                                      <option>No</option>
-                                  </select>
+
+
+                            </form><br>
+                                <!--Modificar Playa: Paso #4-->
+                            <form>
+                                <div class="jumbotron jumbotron-fluid">
+                                    <div class="form-row">
+                                          <div class="col-1"></div>
+
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Peatonal</b></label>
+                                          </div></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Discapacitados</b></label>
+                                          </div></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Coche</b></label>
+                                          </div></div>
+
+                                          <div class="col-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                          <div class="col-1"></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Vehiculos de Emergencia</b></label>
+                                          </div></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Acceso Embarcaciones</b></label>
+                                          </div></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Acceso Helicopteros</b></label>
+                                          </div></div>
+                                          <div class="col-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                          <div class="col-1"></div>
+                                          <div class="col"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="0">
+                                            <label class="form-check-label"><b>Señalización de Accesos</b></label>
+                                          </div></div>
+                                          <div class="col-1"></div>
+                                    </div>
                               </div>
 
-                              <div class="col">
-                                  <select class="form-control">
-                                      <option disabled selected>Selecciona una Opción</option>
-                                      <option>Libre</option>
-                                      <option>Privado</option>
-                                  </select>
-                              </div>
-                            </div>
-                            <br>
-                            <div class="form-row">
-                              <div class="col">
-                                  <select class="form-control">
-                                      <option disabled selected>Autobus</option>
-                                      <option>Si</option>
-                                      <option>No</option>
-                                  </select>
-                              </div>
-                              <div class="col">
-                                  <textarea class="form-control" placeholder="Observaciones" rows="2"></textarea>
-                              </div>
-                            </div>
-                            <br>
-                            <div class="form-row">
-                                <div class="col"></div>
-                                <div class="form-row">
-                                    <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                    <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-                          </form><br>
-                              <!--Modificar Playa: Paso #7-->
-                          <form>
                               <div class="form-row">
-                                  <div class="col"><input class="form-control" type="text" placeholder="Nombre de Hospital"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Latitud"></div>
+                                  <div class="col"></div>
+                                  <div class="form-row">
+                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
+                                      <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                  </div>
+                                  <div class="col"></div>
+                              </div>
+
+                            </form><br>
+                                <!--Modificar Playa: Paso #5-->
+                            <form>
+
+                                  <div class="row">
+                                    <div class="col">
+                                        <select class="form-control" [(ngModel)]="ss" name="AuxilioSalvamento">
+                                            <option disabled selected>Auxilio y Salvamento</option>
+                                            <option value="yes">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <select class="form-control">
+                                            <option disabled selected>Período Auxulio</option>
+                                            <option>Anual</option>
+                                            <option>Estival</option>
+                                        </select>
+                                    </div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Inicio: 09:00"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Final: 18:00"></div>
+                                  </div>
+                                  <br>
+                                    <div class="jumbotron jumbotron-fluid">
+                                        <div class="form-row">
+                                              <div class="col-1"></div>
+
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Señalización de Peligro</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Base de Socorrismo</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Base de Operaciones</b></label>
+                                              </div></div>
+                                              <div class="col-1"></div>
+                                        </div>
+                                        <div class="form-row">
+                                              <div class="col-1"></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Puesto de Vigilancia</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Banderas</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Carteles Informativos</b></label>
+                                              </div></div>
+                                              <div class="col-1"></div>
+                                        </div>
+                                        <div class="form-row">
+                                              <div class="col-1"></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Megafonía</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Balizamiento Terrestre</b></label>
+                                              </div></div>
+                                              <div class="col"><div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" value="0">
+                                                <label class="form-check-label"><b>Balizamiento Acuático</b></label>
+                                              </div></div>
+                                              <div class="col-1"></div>
+                                        </div>
+                                  </div>
+
+                                  <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="form-row">
+                                          <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
+                                          <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                      </div>
+                                      <div class="col"></div>
+                                  </div>
+
+                            </form><br>
+                                <!--Modificar Playa: Paso #6-->
+                            <form>
+                              <div class="form-row">
+                                  <div class="col"><input class="form-control" type="text" placeholder="Carretera más Proxima"></div>
+                              </div>
+                              <br>
+                              <div class="form-row">
+                                <div class="col">
+                                    <select class="form-control">
+                                        <option disabled selected>Aparcamiento</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <select class="form-control">
+                                        <option disabled selected>Selecciona una Opción</option>
+                                        <option>Libre</option>
+                                        <option>Privado</option>
+                                    </select>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="form-row">
+                                <div class="col">
+                                    <select class="form-control">
+                                        <option disabled selected>Autobus</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <textarea class="form-control" placeholder="Observaciones" rows="2"></textarea>
+                                </div>
                               </div>
                               <br>
                               <div class="form-row">
@@ -401,85 +385,103 @@
                                   </div>
                                   <div class="col"></div>
                               </div>
-                          </form><br>
-                              <!--Modificar Playa: Paso #8-->
-                          <form>
-                            <div class="form-row">
-                                <div class="col"><input class="form-control" type="text" placeholder="Puerto Deportivo"></div>
-                                <div class="col"><input class="form-control" type="text" placeholder="Distancia Puerto de Playa"></div>
-                            </div>
-                            <br>
-                            <div class="form-row"><div class="col"></div><div class="col-auto"><label>Observaciones Generales</label></div><div class="col"></div></div>
-                            <div class="form-row"><textarea class="form-control" rows="3"></textarea></div>
-                            <br>
-                            <div class="form-row">
-                                <div class="col"></div>
+                            </form><br>
+                                <!--Modificar Playa: Paso #7-->
+                            <form>
                                 <div class="form-row">
-                                    <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                    <div class="col"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Guardar</button></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Nombre de Hospital"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Latitud"></div>
                                 </div>
-                                <div class="col"></div>
-                            </div>
-                          </form>
+                                <br>
+                                <div class="form-row">
+                                    <div class="col"></div>
+                                    <div class="form-row">
+                                        <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
+                                        <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </form><br>
+                                <!--Modificar Playa: Paso #8-->
+                            <form>
+                              <div class="form-row">
+                                  <div class="col"><input class="form-control" type="text" placeholder="Puerto Deportivo"></div>
+                                  <div class="col"><input class="form-control" type="text" placeholder="Distancia Puerto de Playa"></div>
+                              </div>
+                              <br>
+                              <div class="form-row"><div class="col"></div><div class="col-auto"><label>Observaciones Generales</label></div><div class="col"></div></div>
+                              <div class="form-row"><textarea class="form-control" rows="3"></textarea></div>
+                              <br>
+                              <div class="form-row">
+                                  <div class="col"></div>
+                                  <div class="form-row">
+                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
+                                      <div class="col"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Guardar</button></div>
+                                  </div>
+                                  <div class="col"></div>
+                              </div>
+                            </form>
 
-                          <script>
-                            $('#myModal').on('shown.bs.modal', function () {
-                            $('#myInput').trigger('focus')})
-                          </script>
+                            <script>
+                              $('#myModal').on('shown.bs.modal', function () {
+                              $('#myInput').trigger('focus')})
+                            </script>
 
-                            <!--MODAL-->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Guardar Cambios</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                          Estas apunto de modificar una Playa
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                              <!--MODAL-->
+                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Guardar Cambios</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            Estas apunto de modificar una Playa
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+
+                          </div>
+
 
                         </div>
-
-
-                      </div>
-              </div>
-          </div>
+                </div>
+            </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="card">
               <div class="card-body Margenes">
-                <!--Dar de Alta un Riesgo-->
+                  <div [ngSwitch]="DarAltaRiesgo">
                   <!--Paso#1-->
-                <form>
-                    <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
-                    <div class="EsquemaMapa"></div>
-                    <br>
-                    <div class="form-row">
-                      <div class="col-4"></div>
-                      <div class="col"><input class="form-control" type="text" placeholder="Nombre del Riesgo para Identificarlo"></div>
-                      <div class="col-4"></div>
-                    </div>
-                    <br>
-                    <div class="form-row">
-                        <div class="col"></div>
-                        <!--<div class="col"><button type="button" class="btn btn-primary">ATRAS</button></div>-->
-                        <div class="col-auto"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                        <div class="col"></div>
+                <form [formGroup]="Paso2" (ngSubmit)="guardarCambios()">
+                  <div *ngSwitchCase="'0'">
+                        <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
+                        <div class="EsquemaMapa"></div>
+                        <br>
+                        <div class="form-row">
+                          <div class="col-4"></div>
+                          <div class="col"><input class="form-control" type="text" placeholder="Nombre del Riesgo para Identificarlo" formControlName="nombreRiesgo"></div>
+                          <div class="col-4"></div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col"></div>
+
+                            <div class="col-auto"><button type="Submit" class="btn btn-primary" [disabled]="!Paso2.valid">Siguiente</button></div>
+                            <div class="col"></div>
+                        </div>
                     </div>
                 </form>
                   <!--Paso#2-->
-                <br><br><br><br>
                 <form>
-
+                  <div *ngSwitchCase="'1'">
                   <div class="form-row">
                     <div class="col">
                         <!--<select class="form-control">
@@ -504,11 +506,7 @@
                   <div class="form-row">
                     <div class="col"></div>
                     <div class="col-auto">
-                        <!--<select class="form-control" [(ngModel)]="Situacion" name="Situacion">
-                          <option disabled selected>Situacion</option>
-                          <option value="yesSituacion">Si</option>
-                          <option value="noSituacion">No</option>
-                        </select>-->
+
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="customCheck1" name="Situacion" [(ngModel)]="Situacion.Existe">
                           <label class="custom-control-label" for="customCheck1">Agregar Situación</label>
@@ -523,11 +521,7 @@
                                 <div class="form-row">
                                 <div class="col"></div>
                                       <div class="col-auto">
-                                        <!--<select class="form-control" [(ngModel)]="Viento" name="Viento">
-                                        <option disabled selected>Viento</option>
-                                        <option value="yesViento">Si</option>
-                                        <option value="noViento">No</option>
-                                      </select>-->
+
                                       <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Viento" [(ngModel)]="Situacion.Viento">
                                         <label class="form-check-label" for="exampleCheck1">Viento</label>
@@ -539,21 +533,9 @@
                                 <div class="form-row MargenesJump" *ngIf="Situacion.Viento">
 
                                     <div class="col">
-                                        <select class="form-control">
-                                          <option disabled selected>Nudos</option>
-                                          <option>-1</option>
-                                          <option>1 - 3</option>
-                                          <option>4 - 6</option>
-                                          <option>7 - 10</option>
-                                          <option> 11 - 16</option>
-                                          <option>17 - 21</option>
-                                          <option>22 - 27</option>
-                                          <option>28 - 33</option>
-                                          <option>34 - 40</option>
-                                          <option>41 - 47</option>
-                                          <option>48 - 55</option>
-                                          <option>56 - 63</option>
-                                          <option>+64</option>
+                                        <select class="form-control" [(ngModel)]="Nudos.nudo" name="Nudos">
+                                          <option disabled selected value="">Nudos</option>
+                                          <option *ngFor="let i of ValoresNudos" [value]="i">{{ i }}</option>
                                         </select>
                                     </div>
                                     <div class="col">
@@ -601,18 +583,10 @@
                                 <div class="form-row MargenesJump" *ngIf="Situacion.Oleaje">
 
                                               <div class="col">
-                                                  <select class="form-control">
-                                                    <option disabled selected>Tipo</option>
-                                                    <option>0</option>
-                                                    <option>0 - 0,1</option>
-                                                    <option>0,1 - 0,5</option>
-                                                    <option>0,5 - 1,25</option>
-                                                    <option>1,25 - 2,5</option>
-                                                    <option>2,5 - 4</option>
-                                                    <option>4 - 6</option>
-                                                    <option>6 - 9</option>
-                                                    <option>9 - 14</option>
-                                                    <option>+14</option>
+                                                  <select class="form-control"  [(ngModel)]="TipoOleaje.tipo" name="Tipo">
+                                                    <option disabled selected value="">Tipo</option>
+                                                    <option *ngFor="let i of ValoresTipoOleaje" [value]="i">{{ i }}</option>
+
                                                   </select>
                                               </div>
                                               <div class="col">
@@ -682,7 +656,7 @@
                                 <div class="col">
                                     <select [(ngModel)]="condiciones.probabilidad" name="probabilidad" class="form-control">
                                       <option value="" disabled>Probabilidad</option>
-                                      <option *ngFor="let x of variables" [value]="x.var" >
+                                      <option *ngFor="let x of variablesRiesgo" [value]="x.var" >
                                         {{x.var}}
                                       </option>
                                     </select>
@@ -690,7 +664,7 @@
                                 <div class="col">
                                   <select [(ngModel)]="condiciones.severidad" name="severidad" class="form-control">
                                     <option value="" disabled>Severidad</option>
-                                    <option *ngFor="let x of variables" [value]="x.var">
+                                    <option *ngFor="let x of variablesRiesgo" [value]="x.var">
                                       {{x.var}}
                                     </option>
                                   </select>
@@ -710,12 +684,13 @@
                   <br>
                   <div class="form-row">
                       <div class="col"></div>
-                      <div class="col-auto"><button type="button" class="btn btn-primary">Atras</button></div>
+                      <div class="col-auto"><button type="button" class="btn btn-primary" (click)="anterior()">Atras</button></div>
                       <div class="col-auto"><button type="button" class="btn btn-primary">Guardar Riesgo</button></div>
                       <div class="col"></div>
                   </div>
+                </div>
                 </form>
-
+                </div>
               </div>
             </div>
 
