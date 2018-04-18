@@ -10,14 +10,154 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CoordinadorVistaComponent implements OnInit {
 
   constructor() {
+
     this.Paso2 = new FormGroup({
       'nombreRiesgo': new FormControl('', Validators.required),
     })
+
+    this.ModificarPlaya1 = new FormGroup({
+      'Municipio': new FormControl('', Validators.required),
+      'Provincia': new FormControl('', Validators.required),
+      'CCAA': new FormControl('', Validators.required),
+      'Longitud': new FormControl('', Validators.required),
+      'Anchura': new FormControl('', Validators.required)
+  })
+
+  this.ModificarPlaya2 = new FormGroup({
+    'Pendiente': new FormControl('', Validators.required),
+    'GradoOcupacion': new FormControl('', Validators.required),
+    'GradoUrbanizacion': new FormControl('', Validators.required),
+    'DescripcionPlaya': new FormControl('', Validators.required),
+    'PaseoMaritimo': new FormControl('', Validators.required),
+    'FachadaLitoral': new FormControl('', Validators.required)
+})
+
+this.ModificarPlaya3 = new FormGroup({
+  'CaracteristicasPlaya': new FormGroup({
+    'ZonaFondeo': new FormControl(''),
+    'Nudismo': new FormControl(''),
+  }),
+  'Morfologia': new FormControl('', Validators.required),
+  'Composicion': new FormControl('', Validators.required),
+  'TipoArena': new FormControl('', Validators.required),
+  'TipoOleaje': new FormControl('', Validators.required),
+  'NivelViento': new FormControl('', Validators.required)
+})
+
+this.ModificarPlaya4 = new FormGroup({
+  'Acceso': new FormGroup({
+    'Coche': new FormControl(''),
+    'VehiculosEmergencia': new FormControl(''),
+    'AccesoHelicopteros': new FormControl(''),
+    'ZonaFondeo': new FormControl('')
+  }),
+  'Seguridad': new FormGroup({
+    'AuxilioSalvamento': new FormControl(''),
+    'AccesibilidadVehiculosEmergencias': new FormControl(''),
+    'AccesibilidadEmbarcacionesRescate': new FormControl(''),
+    'SeñalizacionPeligro': new FormControl(''),
+    'AccesibilidadHelipuertoProvisional': new FormControl(''),
+    'BaseOperaciones': new FormControl(''),
+    'Banderas': new FormControl(''),
+    'CartelesInformativos': new FormControl(''),
+    'Megafonia': new FormControl(''),
+    'BalizamientoTerrestre': new FormControl(''),
+    'BalizamientoAcuatico': new FormControl('')
+  })
+
+})
+
+/*this.ModificarPlaya5 = new FormGroup({
+  'AuxilioSalvamento': new FormControl('', Validators.required),
+  'PeriodoAxulio': new FormControl('', Validators.required),
+  'HoraInicio': new FormControl('', Validators.required),
+  'HoraFinal': new FormControl('', Validators.required)
+})*/
+
+this.ModificarPlaya6 = new FormGroup({
+  'CarreteraProxima': new FormControl('', Validators.required),
+  'Aparcamiento': new FormControl('', Validators.required),
+  'AutoBus': new FormControl('', Validators.required),
+  'Observaciones': new FormControl('', Validators.required)
+})
+
+this.ModificarPlaya7 = new FormGroup({
+  'AspectosFisicosAmbientales': new FormGroup({
+    'Vegetacion': new FormControl(''),
+    'EspacioProtegido': new FormControl(''),
+    'Actuaciones': new FormControl(''),
+    'BanderaAzul': new FormControl('')
+  }),
+  'NombreHospital': new FormControl('', Validators.required),
+  'Longitud': new FormControl('', Validators.required),
+  'Latitud': new FormControl('', Validators.required)
+
+
+})
+
+this.ModificarPlaya8 = new FormGroup({
+  'PuertoDeportivo': new FormControl('', Validators.required),
+  'DistanciaPuertoPlaya': new FormControl('', Validators.required),
+  'ObervacionesGenerales': new FormControl('', Validators.required)
+})
 
   }
 
   ngOnInit() {
   }
+
+//----------------------selects MODIFICAR PLAYA-------------------------------------
+SN:String[] = ["Si", "No"];
+
+//Paso#2
+//Pendiente = {pendiente: ''};
+ValoresPendiente:String[] = ["Angulo Suave", "Angulo Normal", "Pendiente Brusca"];
+
+GradoOcupacion = {gradoOcupacion: ''};
+ValoresGradoOcupacion:String[] = ["Alto", "Medio", "Suave"];
+
+GradoUrbanizacion = {gradoUrbanizacion: ''};
+ValoresGradoUrbanizacion:String[] = ["Rural", "Salvaje", "Urbano"];
+
+PaseoMaritimo = {paseoMaritimo: ''};
+
+FachadaLitoral = {fachadaLitoral: ''};
+ValoresFachadaLitoral:String[] = ["Urbano", "Industrial", "Natural", "Acantilado"];
+
+//Paso#3
+Morfologia = {morfologia: ''};
+ValoresMorfologia:String[] = ["Arenosa", "Rocosa"];
+
+Composicion = {composicion: ''};
+ValoresComposicion:String[] = ["Arena", "Grabilla", "Grava", "Bolos"];
+
+TipoArena = {tipoArena: ''};
+ValoresTipoArena:String[] = ["Dorada"];
+
+TipoOlejae = {tipoOleaje: ''}; NivelViento = {nivelViento: ''};
+ValoresTO_NV:String[] = ["Leve", "Mediano", "Fuerte"];
+
+//Paso#5
+AuxilioSalvamento = {axulioSalvamento: ''};
+
+PeriodoAxulio = {periodoAxulio: ''};
+ValoresPeriodoAuxlio:String[] = ["Anual", "Estival"];
+
+//Paso#6
+Aparcamiento = {aparcamiento: ''}; AutoBus = {autoBus: ''};
+AparcamientoModo = {aparcamientoModo: ''};
+ValoresAparcamientoModo:String[] = ["Libre", "Privado"];
+
+//----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
   Paso1:Object={
     Municipio: null,
@@ -86,19 +226,76 @@ export class CoordinadorVistaComponent implements OnInit {
 
 //-------------------Variables Select: (Compartidas) --------------------------------
 
+Direccion = {direccion: ''};
+ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "Oés-noroeste(ONO)",
+                             "Oeste(O)", "Oés-suroeste(OSO)", "Sur-oeste(SO)", "Sur-suroeste(SSO)",
+                             "Sur(S)", "Sur-sudeste(SSE)", "Sudeste(SE)", "Es-sudeste(ESE)", "Este(E)",
+                             "Es-nordeste(ENE)", "Nordeste(NE)", "Nor-nordeste(NNE)", "Cualquier Direccion()"]
 
 
 
-  guardarDatos(Paso1:any){
-    console.log(Paso1)
-  }
-
-  dick(){
-    console.log(this.Paso1)
-  }
+//-----------------------------------------------------------------------------------
 
 
-  /*-------------Formularios para Dar de Alta Riesgo----------------------*/
+//---------------Formularios para MODIFICAR PLAYA------------------------------------
+    //Paso#1
+    ModificarPlaya1:FormGroup;
+    C_ModificarPlaya1(){
+      console.log(this.ModificarPlaya1.value);
+      this.ModificarPlayasiguiente();
+    }
+    //Paso#2
+    ModificarPlaya2:FormGroup;
+    C_ModificarPlaya2(){
+      console.log(this.ModificarPlaya2.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya3:FormGroup;
+    C_ModificarPlaya3(){
+      console.log(this.ModificarPlaya3.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya4:FormGroup;
+    C_ModificarPlaya4(){
+      console.log(this.ModificarPlaya4.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya5:FormGroup;
+    C_ModificarPlaya5(){
+      console.log(this.ModificarPlaya5.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya6:FormGroup;
+    C_ModificarPlaya6(){
+      console.log(this.ModificarPlaya6.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya7:FormGroup;
+    C_ModificarPlaya7(){
+      console.log(this.ModificarPlaya7.value);
+      this.ModificarPlayasiguiente();
+    }
+    ModificarPlaya8:FormGroup;
+    C_ModificarPlaya8(){
+      console.log(this.ModificarPlaya8.value);
+      this.ModificarPlayasiguiente();
+    }
+
+    ModificarPlaya:number=0;
+
+    ModificarPlayasiguiente(){
+      if(this.ModificarPlaya<6)
+      this.ModificarPlaya = this.ModificarPlaya+1;
+    console.log(this.ModificarPlaya);
+    }
+
+    ModificarPlayaanterior(){
+        if(this.ModificarPlaya>0)
+        this.ModificarPlaya = this.ModificarPlaya-1;
+      console.log(this.ModificarPlaya);
+      }
+
+  /*-------------Formularios para DAR ALTA UN RIESGO--------------------------------*/
   Paso2:FormGroup;
   DarAltaRiesgo:number=0;
 
@@ -113,8 +310,6 @@ export class CoordinadorVistaComponent implements OnInit {
       this.DarAltaRiesgo = this.DarAltaRiesgo-1;
     console.log(this.DarAltaRiesgo);
     }
-
-
 
   guardarCambios(){
     console.log(this.DarAltaRiesgo);

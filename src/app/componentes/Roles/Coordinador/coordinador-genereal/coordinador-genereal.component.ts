@@ -11,5 +11,5 @@ export class CoordinadorGenerealComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //-----------------------Formulario SOLICITAR UNA NUEVA PLAYA-----------------------------------------------------
 }

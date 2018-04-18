@@ -1,4 +1,4 @@
-<div class="container top-container">
+ <div class="container top-container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Modificar Playa</a>
@@ -15,77 +15,75 @@
                           <div class="card-body Margenes">
                             <label>En Playa: [Mostrar Nombre de Playa Seleccionada Previamente]</label><br><br>
 
+<div [ngSwitch]="ModificarPlaya">
+<div *ngSwitchCase="'0'">
                                 <!--Modificar Playa: Paso #1-->
-                            <form (ngSubmit)="guardarDatos(Paso1)" #Paso1="ngForm">
+                            <form [formGroup]="ModificarPlaya1" (ngSubmit)="C_ModificarPlaya1()" [ngClass]="{'is-invalid': !ModificarPlaya1.valid && ModificarPlaya1.touched }">
                                 <div class="form-row" >
-                                    <div class="col"><input class="form-control" type="text" placeholder="Municipio" [ngClass]="{ 'is-invalid': (Municipio.errors?.required) && Municipio.touched }" name="Municipio" [(ngModel)]="Paso1.Municipio" required #Municipio="ngModel"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Provincia"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="CC AA:"></div>
+                                    <div class="col"><input class="form-control" formControlName="Municipio" placeholder="Municipio" ></div>
+                                    <div class="col"><input class="form-control" formControlName="Provincia" placeholder="Provincia"></div>
+                                    <div class="col"><input class="form-control" formControlName="CCAA" placeholder="CC AA:"></div>
                                 </div>
                                 <br>
                                 <div class="form-row">
                                     <div class="col-1"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Anchura"></div>
+                                    <div class="col"><input class="form-control" formControlName="Longitud" placeholder="Longitud"></div>
+                                    <div class="col"><input class="form-control" formControlName="Anchura" placeholder="Anchura"></div>
                                     <div class="col-1"></div>
                                 </div>
                                 <br>
                                 <div class="form-row">
                                     <div class="col"></div>
-                                    <!--<div class="col"><button type="button" class="btn btn-primary">ATRAS</button></div>-->
-                                    <div class="col-auto"><button type="button" class="btn btn-primary" [disabled]="!Paso1.valid">Siguiente</button></div>
+                                    <div class="col-auto"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya1.valid">Siguiente</button></div>
                                     <div class="col"></div>
                                 </div>
                             </form><br>
+</div>
+
+<div *ngSwitchCase="'1'">
                                 <!--Modificar Playa: Paso #2-->
-                            <form>
+                            <form [formGroup]="ModificarPlaya2" (ngSubmit)="C_ModificarPlaya2()" [ngClass]="{'is-invalid': !ModificarPlaya2.valid && ModificarPlaya2.touched }">
                                 <div class="form-row">
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Pendiente</option>
-                                            <option>Ángulo Suave</option>
-                                            <option>Ángulo Normal</option>
-                                            <option>Pendiente Brusca</option>
+                                      <!--[(ngModel)]="Pendiente.pendiente" name="Pendiente" [ngModelOptions]="{standalone: true}"-->
+                                        <select class="form-control" formControlName="Pendiente">
+                                            <option disabled selected value="">Pendiente</option>
+                                            <option *ngFor="let i of ValoresPendiente" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
 
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Grado de Ocupación</option>
-                                            <option>Alto</option>
-                                            <option>Medio</option>
-                                            <option>Suave</option>
+                                        <select class="form-control" formControlName="GradoOcupacion">
+                                            <option disabled selected value="">Grado de Ocupación</option>
+                                            <option *ngFor="let i of ValoresGradoOcupacion" [ngValue]="i">{{ i }}</option>
+
                                         </select>
                                     </div>
 
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Grado de Urbanización</option>
-                                            <option>Rural</option>
-                                            <option>Salvaje</option>
-                                            <option>Urbano</option>
+                                        <select class="form-control" formControlName="GradoUrbanizacion">
+                                            <option disabled selected value="">Grado de Urbanización</option>
+                                            <option *ngFor="let i of ValoresGradoUrbanizacion" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-row">
                                   <div class="col">
-                                      <textarea class="form-control" placeholder="Descripción de Playa" rows="3"></textarea>
+                                      <textarea class="form-control" placeholder="Descripción de Playa" rows="3" formControlName="DescripcionPlaya"></textarea>
                                   </div>
                                   <div class="col-4">
                                     <div class="form-rows">
-                                      <select class="form-control">
-                                          <option disabled selected>Paseo Maritimo</option>
-                                          <option>Si</option>
-                                          <option>No</option>
+                                      <select class="form-control" formControlName="PaseoMaritimo">
+                                          <option disabled selected value="">Paseo Maritimo</option>
+                                          <option *ngFor="let i of SN" [ngValue]="i">{{ i }}</option>
+
                                       </select>
                                       <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-                                      <select class="form-control">
-                                          <option disabled selected>Fachada Litoral</option>
-                                          <option>Urbano</option>
-                                          <option>Industrial</option>
-                                          <option>Natural</option>
-                                          <option>Acantilado</option>
+                                      <select class="form-control" formControlName="FachadaLitoral">
+                                          <option disabled selected value="">Fachada Litoral</option>
+                                          <option *ngFor="let i of SN" [ngValue]="i">{{ i }}</option>
+
                                       </select>
                                     </div>
                                   </div>
@@ -95,187 +93,236 @@
                                 <div class="form-row">
                                     <div class="col"></div>
                                     <div class="form-row">
-                                        <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                        <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                        <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                        <div class="col"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya2.valid">Siguiente</button></div>
+
                                     </div>
                                     <div class="col"></div>
                                 </div>
                             </form><br>
+</div>
+<div *ngSwitchCase="'2'">
+
+
                                 <!--Modificar Playa: Paso #3-->
-                            <form>
+                            <form [formGroup]="ModificarPlaya3" (ngSubmit)="C_ModificarPlaya3()" [ngClass]="{'is-invalid': !ModificarPlaya3.valid && ModificarPlaya3.touched }">
                                 <div class="form-row">
+                                  <div class="col">
+                                      <select class="form-control" formControlName="Morfologia">
+                                          <option disabled selected value="">Morfologia</option>
+                                          <option *ngFor="let i of ValoresMorfologia" [ngValue]="i">{{ i }}</option>
+                                      </select>
+                                  </div>
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Mofología</option>
-                                            <option>Arenosa</option>
-                                            <option>Rocosa</option>
+                                        <select class="form-control" formControlName="Composicion">
+                                            <option disabled selected value="">Composición</option>
+                                            <option *ngFor="let i of ValoresComposicion" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Composición</option>
-                                            <option>Arena</option>
-                                            <option>Grabilla</option>
-                                            <option>Grava</option>
-                                            <option>Bolos</option>
+                                        <select class="form-control" formControlName="TipoArena">
+                                            <option disabled selected value="">Tipo Arena</option>
+                                            <option *ngFor="let i of ValoresTipoArena" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
-                                    <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Tipo Arena</option>
-                                            <option>Dorada</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="jumbotron jumbotron-fluid">
-                                <div class="form-row">
-                                      <div class="col"></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Zona Fondeo</b></label>
-                                      </div></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Nudismo</b></label>
-                                      </div></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Vegetación</b></label>
-                                      </div></div>
-                                      <div class="col"></div>
-                                </div>
-                                <div class="form-row">
-                                      <div class="col"></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Espacio Protegeido</b></label>
-                                      </div></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Actuaciones</b></label>
-                                      </div></div>
-                                      <div class="col"><div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="0">
-                                        <label class="form-check-label"><b>Bandera Azul</b></label>
-                                      </div></div>
-                                      <div class="col"></div>
-                                </div>
+
+                                  </div>
+                                  <br><br>
+                                  <div class="form-row"><div class="col"></div><div class="col-auto"><h6>Condiciones de Baño</h6></div><div class="col"></div></div>
+                                  <div class="jumbotron jumbotron-fluid">
+                                    <div formGroupName="CaracteristicasPlaya">
+
+                                  <div class="form-row" >
+                                        <div class="col"></div>
+                                        <div class="col-auto"><div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" formControlName="ZonaFondeo">
+                                          <label class="form-check-label"><b>Zona Fondeo</b></label>
+                                        </div></div>
+
+                                        <div class="col-auto"><div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" formControlName="Nudismo">
+                                          <label class="form-check-label"><b>Nudismo</b></label>
+                                        </div></div>
+
+                                        <div class="col"></div>
+                                  </div>
+
+
+
+
+                              </div>
+                              <br><br>
+                              <div class="form-row">
+                                  <div class="col-1"></div>
+                                  <div class="col">
+                                      <select class="form-control" formControlName="TipoOleaje">
+                                          <option disabled selected value="">Tipo de Oleaje</option>
+                                          <option *ngFor="let i of ValoresTO_NV" [ngValue]="i">{{ i }}</option>
+                                      </select>
+                                  </div>
+                                  <div class="col">
+                                      <select class="form-control" formControlName="NivelViento">
+                                          <option disabled selected value="">Nivel de Viento</option>
+                                          <option *ngFor="let i of ValoresTO_NV" [ngValue]="i">{{ i }}</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-1"></div>
                               </div>
 
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="col"></div>
                                 <div class="form-row">
-                                    <div class="col-1"></div>
-                                    <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Tipo de Oleaje</option>
-                                            <option>Leve</option>
-                                            <option>Moderado</option>
-                                            <option>Fuerte</option>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Nivel de Viento</option>
-                                            <option>Leve</option>
-                                            <option>Moderado</option>
-                                            <option>Fuerte</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-1"></div>
+                                    <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                    <div class="col"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya3.valid">Siguiente</button></div>
                                 </div>
-                                <br>
+                                <div class="col"></div>
+                            </div>
 
-
-                                <div class="form-row">
-                                    <div class="col"></div>
-                                    <div class="form-row">
-                                        <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                        <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
-                                    </div>
-                                    <div class="col"></div>
-                                </div>
 
 
 
                             </form><br>
+
+</div>
+
+<div *ngSwitchCase="'3'">
+
                                 <!--Modificar Playa: Paso #4-->
-                            <form>
+                            <form [formGroup]="ModificarPlaya4" (ngSubmit)="C_ModificarPlaya4()" [ngClass]="{'is-invalid': !ModificarPlaya4.valid && ModificarPlaya4.touched }">
+                              <div class="form-row"><div class="col"></div><div class="col-auto"><h4>Accesos</h4></div><div class="col"></div></div>
                                 <div class="jumbotron jumbotron-fluid">
                                     <div class="form-row">
-                                          <div class="col-1"></div>
-
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
-                                            <label class="form-check-label"><b>Peatonal</b></label>
-                                          </div></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
-                                            <label class="form-check-label"><b>Discapacitados</b></label>
-                                          </div></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
+                                          <div class="col"></div>
+                                          <div class="col-auto"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox">
                                             <label class="form-check-label"><b>Coche</b></label>
                                           </div></div>
 
-                                          <div class="col-1"></div>
-                                    </div>
-                                    <div class="form-row">
-                                          <div class="col-1"></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
+                                          <div class="col-auto"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox">
                                             <label class="form-check-label"><b>Vehiculos de Emergencia</b></label>
                                           </div></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
-                                            <label class="form-check-label"><b>Acceso Embarcaciones</b></label>
-                                          </div></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
+
+                                          <div class="col-auto"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox">
                                             <label class="form-check-label"><b>Acceso Helicopteros</b></label>
                                           </div></div>
-                                          <div class="col-1"></div>
+                                          <div class="col"></div>
                                     </div>
+                                    <br>
                                     <div class="form-row">
-                                          <div class="col-1"></div>
-                                          <div class="col"><div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" value="0">
+                                          <div class="col"></div>
+                                          <div class="col-auto"><div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox">
                                             <label class="form-check-label"><b>Señalización de Accesos</b></label>
                                           </div></div>
-                                          <div class="col-1"></div>
+                                          <div class="col"></div>
                                     </div>
+                              </div>
+                              <br>
+                              <div class="form-row"><div class="col"></div><div class="col-auto"><h4>Seguridad</h4></div><div class="col"></div></div>
+                              <div class="jumbotron jumbotron-fluid">
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Auxilio y Salvamento</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Accesibilidad de Vehículos de Emergencias</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Accesibilidad de Embarcaciones de Rescate</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Señalizacion de Peligro</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Accesibilidad para Helipuerto Provisional</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Base de Operaciones</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Banderas</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Carteles Informativos</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Megafonía</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                      <div class="col"></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Balizamiento Terrestre</b></label>
+                                      </div></div>
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"><b>Balizamiento Acuático</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                </div>
+
+
                               </div>
 
                               <div class="form-row">
                                   <div class="col"></div>
                                   <div class="form-row">
-                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                      <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                      <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                      <div class="col"><button type="submit" class="btn btn-primary">Siguiente</button></div>
                                   </div>
                                   <div class="col"></div>
                               </div>
 
-                            </form><br>
+                            </form>
+</div>
+
+
                                 <!--Modificar Playa: Paso #5-->
-                            <form>
+                            <!--<form [formGroup]="ModificarPlaya5" (ngSubmit)="C_ModificarPlaya5()" [ngClass]="{'is-invalid': !ModificarPlaya5.valid && ModificarPlaya5.touched }">
 
                                   <div class="row">
                                     <div class="col">
-                                        <select class="form-control" [(ngModel)]="ss" name="AuxilioSalvamento">
-                                            <option disabled selected>Auxilio y Salvamento</option>
-                                            <option value="yes">Si</option>
-                                            <option value="no">No</option>
+                                        <select class="form-control" formControlName="AuxilioSalvamento">
+                                            <option disabled selected value="">Auxilio y Salvamento</option>
+                                            <option *ngFor="let i of SN" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
 
                                     <div class="col">
-                                        <select class="form-control">
-                                            <option disabled selected>Período Auxulio</option>
-                                            <option>Anual</option>
-                                            <option>Estival</option>
+                                        <select class="form-control" formControlName="PeriodoAxulio">
+                                            <option disabled selected value="">Período Auxulio</option>
+                                            <option *ngFor="let i of ValoresPeriodoAuxlio" [ngValue]="i">{{ i }}</option>
                                         </select>
                                     </div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Inicio: 09:00"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Final: 18:00"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Inicio: 09:00" formControlName="HoraInicio"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Hora Final: 18:00" formControlName="HoraFinal"></div>
                                   </div>
                                   <br>
                                     <div class="jumbotron jumbotron-fluid">
@@ -334,94 +381,128 @@
                                       <div class="col"></div>
                                       <div class="form-row">
                                           <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                          <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                          <div class="col"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya5.valid">Siguiente</button></div>
                                       </div>
                                       <div class="col"></div>
                                   </div>
 
-                            </form><br>
-                                <!--Modificar Playa: Paso #6-->
-                            <form>
-                              <div class="form-row">
-                                  <div class="col"><input class="form-control" type="text" placeholder="Carretera más Proxima"></div>
-                              </div>
-                              <br>
-                              <div class="form-row">
-                                <div class="col">
-                                    <select class="form-control">
-                                        <option disabled selected>Aparcamiento</option>
-                                        <option>Si</option>
-                                        <option>No</option>
-                                    </select>
-                                </div>
+                            </form>--><br>
 
+
+<div *ngSwitchCase="'4'">
+                                <!--Modificar Playa: Paso #6-->
+                            <form [formGroup]="ModificarPlaya6" (ngSubmit)="C_ModificarPlaya6()" [ngClass]="{'is-invalid': !ModificarPlaya6.valid && ModificarPlaya6.touched }">
+                              <div class="form-row">
+                                  <div class="col"><input class="form-control" type="text" placeholder="Carretera más Proxima" formControlName="CarreteraProxima"></div>
+                              </div>
+                              <br>
+                              <div class="form-row">
                                 <div class="col">
-                                    <select class="form-control">
-                                        <option disabled selected>Selecciona una Opción</option>
-                                        <option>Libre</option>
-                                        <option>Privado</option>
+                                    <select class="form-control" formControlName="Aparcamiento">
+                                        <option disabled selected value="">Tipo de Aparcamiento</option>
+                                        <option *ngFor="let i of ValoresAparcamientoModo" [ngValue]="i">{{ i }}</option>
                                     </select>
                                 </div>
                               </div>
                               <br>
                               <div class="form-row">
                                 <div class="col">
-                                    <select class="form-control">
-                                        <option disabled selected>Autobus</option>
-                                        <option>Si</option>
-                                        <option>No</option>
+                                    <select class="form-control" formControlName="AutoBus">
+                                        <option disabled selected value="">Autobus</option>
+                                        <option *ngFor="let i of SN" [ngValue]="i">{{ i }}</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <textarea class="form-control" placeholder="Observaciones" rows="2"></textarea>
+                                    <textarea class="form-control" placeholder="Observaciones" rows="2" formControlName="Observaciones"></textarea>
                                 </div>
                               </div>
                               <br>
                               <div class="form-row">
                                   <div class="col"></div>
                                   <div class="form-row">
-                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                      <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                      <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                      <div class="col"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya6.valid">Siguiente</button></div>
                                   </div>
                                   <div class="col"></div>
                               </div>
                             </form><br>
+</div>
+
+<div *ngSwitchCase="'5'">
                                 <!--Modificar Playa: Paso #7-->
-                            <form>
+                            <form [formGroup]="ModificarPlaya7" (ngSubmit)="C_ModificarPlaya7()" [ngClass]="{'is-invalid': !ModificarPlaya7.valid && ModificarPlaya7.touched }">
+                                <div class="form-row"><div class="col"></div><div class="col-auto"><h4>Aspectos físicos y ambientales</h4></div><div class="col"></div></div>
+                                <br>
+                                <div formGroupName="AspectosFisicosAmbientales" class="jumbotron jumbotron-fluid">
+                                  <div class="form-row">
+                                        <div class="col"></div>
+                                        <div class="col-auto"><div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" formControlName="Vegetacion">
+                                          <label class="form-check-label"><b>Vegetación</b></label>
+                                        </div></div>
+                                        <div class="col-auto"><div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" formControlName="EspacioProtegido">
+                                          <label class="form-check-label"><b>Espacio Protegeido</b></label>
+                                        </div></div>
+                                        <div class="col-auto"><div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" formControlName="Actuaciones">
+                                          <label class="form-check-label"><b>Actuaciones</b></label>
+                                        </div></div>
+                                        <div class="col"></div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="col"></div>
+
+                                      <div class="col-auto"><div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="BanderaAzul">
+                                        <label class="form-check-label"><b>Bandera Azul</b></label>
+                                      </div></div>
+                                      <div class="col"></div>
+                                  </div>
+                                </div>
+                                  <div class="form-row"><div class="col"></div><div class="col-auto"><h4>Hospital más Cercano</h4></div><div class="col"></div></div>
+                                  <br>
                                 <div class="form-row">
-                                    <div class="col"><input class="form-control" type="text" placeholder="Nombre de Hospital"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Longitud"></div>
-                                    <div class="col"><input class="form-control" type="text" placeholder="Latitud"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Nombre de Hospital" formControlName="NombreHospital"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Longitud" formControlName="Longitud"></div>
+                                    <div class="col"><input class="form-control" type="text" placeholder="Latitud" formControlName="Latitud"></div>
                                 </div>
                                 <br>
                                 <div class="form-row">
                                     <div class="col"></div>
                                     <div class="form-row">
-                                        <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                        <div class="col"><button type="button" class="btn btn-primary">Siguiente</button></div>
+                                        <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                        <div class="col"><button type="submit" class="btn btn-primary" [disabled]="!ModificarPlaya7.valid">Siguiente</button></div>
                                     </div>
                                     <div class="col"></div>
                                 </div>
+
                             </form><br>
+</div>
+
+<div *ngSwitchCase="'6'">
                                 <!--Modificar Playa: Paso #8-->
-                            <form>
+                            <form [formGroup]="ModificarPlaya8" (ngSubmit)="C_ModificarPlaya8()" [ngClass]="{'is-invalid': !ModificarPlaya8.valid && ModificarPlaya8.touched }">
                               <div class="form-row">
-                                  <div class="col"><input class="form-control" type="text" placeholder="Puerto Deportivo"></div>
-                                  <div class="col"><input class="form-control" type="text" placeholder="Distancia Puerto de Playa"></div>
+                                  <div class="col"><input class="form-control" type="text" placeholder="Puerto Deportivo" formControlName="PuertoDeportivo"> </div>
+                                  <div class="col"><input class="form-control" type="text" placeholder="Distancia Puerto de Playa" formControlName="DistanciaPuertoPlaya"></div>
                               </div>
                               <br>
                               <div class="form-row"><div class="col"></div><div class="col-auto"><label>Observaciones Generales</label></div><div class="col"></div></div>
-                              <div class="form-row"><textarea class="form-control" rows="3"></textarea></div>
+                              <div class="form-row"><textarea class="form-control" rows="3" formControlName="ObervacionesGenerales"></textarea></div>
                               <br>
                               <div class="form-row">
                                   <div class="col"></div>
                                   <div class="form-row">
-                                      <div class="col"><button type="button" class="btn btn-primary">Atras</button></div>
-                                      <div class="col"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Guardar</button></div>
+                                      <div class="col"><button type="button" class="btn btn-primary" (click)="ModificarPlayaanterior()">Atras</button></div>
+                                      <div class="col"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" [disabled]="!ModificarPlaya8.valid">Guardar</button></div>
                                   </div>
                                   <div class="col"></div>
                               </div>
                             </form>
+</div>
+</div>
+
 
                             <script>
                               $('#myModal').on('shown.bs.modal', function () {
@@ -450,11 +531,19 @@
                                     </div>
 
                           </div>
-
-
                         </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="card">
               <div class="card-body Margenes">
@@ -539,46 +628,23 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control">
-                                          <option disabled selected>Dirección</option>
-                                          <option>Norte(N)</option>
-                                          <option>Nor-noroeste(NNO)</option>
-                                          <option>Noroeste(NO)</option>
-                                          <option>Oés-noroeste(ONO)</option>
-                                          <option>Oeste(O)</option>
-                                          <option>Oés-suroeste(OSO)</option>
-                                          <option>Sur-oeste(SO)</option>
-                                          <option>Sur-suroeste(SSO)</option>
-                                          <option>Sur(S)</option>
-                                          <option>Sur-sudeste(SSE)</option>
-                                          <option>Sudeste(SE)</option>
-                                          <option>Es-sudeste(ESE)</option>
-                                          <option>Este(E)</option>
-                                          <option>Es-nordeste(ENE)</option>
-                                          <option>Nordeste(NE)</option>
-                                          <option>Nor-nordeste(NNE)</option>
-                                          <option>Cualquier Direccion()</option>
+                                        <select class="form-control" [(ngModel)]="Direccion.direccion" name="DireccionViento">
+                                          <option disabled selected value="">Dirección</option>
+                                          <option *ngFor="let i of ValoresDireccion" [value]="i">{{ i }}</option>
                                         </select>
                                     </div>
 
                                   </div>
                                   <br>
                                   <!--Oleaje-->
-                                <div class="form-row">
-                                        <div class="col"></div>
+                                <div class="form-row"><div class="col"></div>
                                               <div class="col-auto">
-                                                <!--<select class="form-control" [(ngModel)]="Oleaje" name="Oleaje">
-                                                <option disabled selected>Oleaje</option>
-                                                <option value="yesOleaje">Si</option>
-                                                <option value="noOleaje">No</option>
-                                              </select>-->
                                               <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Oleaje" [(ngModel)]="Situacion.Oleaje">
                                                 <label class="form-check-label" for="exampleCheck1">Oleaje</label>
                                               </div>
                                             </div>
-                                        <div class="col"></div>
-                                </div>
+                                <div class="col"></div></div>
                                 <br>
                                 <div class="form-row MargenesJump" *ngIf="Situacion.Oleaje">
 
@@ -590,26 +656,10 @@
                                                   </select>
                                               </div>
                                               <div class="col">
-                                                  <select class="form-control">
-                                                    <option disabled selected>Dirección</option>
-                                                    <option>Norte(N)</option>
-                                                    <option>Nor-noroeste(NNO)</option>
-                                                    <option>Noroeste(NO)</option>
-                                                    <option>Oés-noroeste(ONO)</option>
-                                                    <option>Oeste(O)</option>
-                                                    <option>Oés-suroeste(OSO)</option>
-                                                    <option>Sur-oeste(SO)</option>
-                                                    <option>Sur-suroeste(SSO)</option>
-                                                    <option>Sur(S)</option>
-                                                    <option>Sur-sudeste(SSE)</option>
-                                                    <option>Sudeste(SE)</option>
-                                                    <option>Es-sudeste(ESE)</option>
-                                                    <option>Este(E)</option>
-                                                    <option>Es-nordeste(ENE)</option>
-                                                    <option>Nordeste(NE)</option>
-                                                    <option>Nor-nordeste(NNE)</option>
-                                                    <option>Cualquier Direccion()</option>
-                                                  </select>
+                                                <select class="form-control" [(ngModel)]="Direccion.direccion" name="DireccionOleaje">
+                                                  <option disabled selected value="">Dirección</option>
+                                                  <option *ngFor="let i of ValoresDireccion" [value]="i">{{ i }}</option>
+                                                </select>
                                               </div>
 
                                             </div>
@@ -618,11 +668,6 @@
                                 <div class="form-row">
                                     <div class="col"></div>
                                           <div class="col-auto">
-                                            <!--<select class="form-control" [(ngModel)]="Marea" name="Marea">
-                                            <option disabled selected>Marea</option>
-                                            <option value="yesMarea">Si</option>
-                                            <option value="noMarea">No</option>
-                                          </select>-->
                                           <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1" name="Marea" [(ngModel)]="Situacion.Marea">
                                             <label class="form-check-label" for="exampleCheck1">Marea</label>
