@@ -1,227 +1,123 @@
 <div class="container top-container margenf">
     <!--Nombres de Fichas-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-       <li class="nav-item">
-         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#RegistrarSuceso" role="tab" aria-controls="home" aria-selected="true">Registrar Incidentes/Intervenciones</a>
-       </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+      </li>
     </ul>
 
       <div class="tab-content" id="myTabContent">
 
 
-        <div class="tab-pane fade show active" id="RegistrarSuceso" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="card">
 
               <div class="card-body Margenes">
-                      <!--Registrar un Incidente: Paso#1-->
-                  <form>
-                      <div class="form-row">
-                          <div class="col-4"></div>
-                          <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Introducir Nombre de Suceso"></div>
-                          <div class="col-4"></div>
-                      </div>
-                      <br>
-                      <div class="form-row">
-                          <div class="col"></div>
-                          <div class="col-auto"><button class="btn btn-primary btn-block" type="submit">Continuar</button></div>
-                          <div class="col"></div>
-                      </div>
-                  </form><br>
-                      <!--Registrar un Incidente: Paso#2-->
-                  <form>
-                    <div class="form-row">
-                      <div class="col">
-                            <select class="form-control" id="Actividad">
-                              <option disabled selected>Seleccione Actividad</option>
-                              <option>Baño en Reposo</option>
-                              <option>Juegos en el Agua</option>
-                              <option>Natación Recreativa</option>
-                              <option>Entrenamiento</option>
-                              <option>Natación Competitiva</option>
-                              <option>Bueceo Recreativo (Sin Botella)</option>
-                              <option>Bueceo Recreativo (Con Botella)</option>
-                              <option>Buceo Profesional</option>
-                              <option>Pesca desde Playa</option>
-                              <option>Pesca desde Roca</option>
-                              <option>Pesca desde Embarcación</option>
-                              <option>Paseo-caída</option>
-                              <option>Transporte Acuático</option>
-                              <option>Transporte no Acuático</option>
-                              <option>Embarcación de Vela</option>
-                              <option>Embarcación a Parapente</option>
-                              <option>Esquí Acuático</option>
-                              <option>Surf</option>
-                              <option>Padel Surf</option>
-                              <option>No relevante</option>
-                              <option>Otras</option>
-                              <option>Pesca con Arpón</option>
-                            </select>
-                      </div>
-                      <div class="col">
-                            <select class="form-control" id="Paises">
-                              <option selected>España</option>
-                              <option *ngFor="let i of Paises;">{{i}}</option>
-                              </select>
-                      </div>
-                      <div class="col-2">
-                            <select class="form-control" id="Sexo">
-                                <option disabled selected>Sexo</option>
-                                <option>Femenino</option>
-                                <option>Masculino</option>
-                                <option>Otro</option>
-                              </select>
-                      </div>
-                      <div class="col-2">
-                            <select class="form-control" id="Edad">
-                                <option disabled selected>Edad</option>
-                                <option>0 - 1</option>
-                                <option>1 - 4</option>
-                                <option>5 - 9</option>
-                                <option>10 - 14</option>
-                                <option>15 - 19</option>
-                                <option>20 - 24</option>
-                                <option>25 - 44</option>
-                                <option>45+</option>
-                              </select>
-                      </div>
+                <div [ngSwitch]="RegistrarIncedentes">
+                    <div *ngSwitchCase="'0'">
+                          <!--Registrar un Incidente: Paso#1-->
+                      <form [formGroup]="RegistrarIncedentes1" (ngSubmit)="C_RegistrarIncedentes1()" [ngClass]="{'is-invalid': !RegistrarIncedentes1.valid && RegistrarIncedentes1.touched }">
+                          <div class="form-row">
+                              <div class="col-4"></div>
+                              <div class="col"><input type="text" class="form-control" id="formGroupExampleInput" placeholder="Introducir Nombre de Suceso" formControlName="NombreSuceso"></div>
+                              <div class="col-4"></div>
+                          </div>
+                          <br>
+                          <div class="form-row">
+                              <div class="col"></div>
+                              <div class="col-auto"><button class="btn btn-primary btn-block" type="submit" [disabled]="!RegistrarIncedentes1.valid">Siguiente</button></div>
+                              <div class="col"></div>
+                          </div>
+                      </form>
                     </div>
-                    <br>
-                    <div class="form-row EsquemaMapa"><h1>MAPA</h1></div>
-                  </form><br>
-                      <!--Registrar un Incidente: Paso#3-->
-                  <form>
+                          <!--Registrar un Incidente: Paso#2-->
+                    <div *ngSwitchCase="'1'">
+                      <form [formGroup]="RegistrarIncedentes2" (ngSubmit)="C_RegistrarIncedentes2()" [ngClass]="{'is-invalid': !RegistrarIncedentes2.valid && RegistrarIncedentes2.touched }">
                         <div class="form-row">
-                        <div class="col"><select class="form-control" id="Deteccion">
-                          <option selected disabled>¿Como se ha detectado el Suceso?</option>
-                          <option>Vigilancia Directa</option>
-                          <option>Aviso de Otro Usuario</option>
-                          <option>Aviso 112</option>
-                          <option>Comunicación Interna</option>
-                          <option>Propio Accidentado</option>
-                          <option>061</option>
-                          <option>Salvamento Marítimo</option>
-                        </select></div>
-                        <div class="col">
-                          <select class="form-control" id="Deteccion">
-                              <option selected disabled>¿Dónde estaba la víctima justo antes del Suceso?</option>
-                              <option>Adentro del Agua</option>
-                              <option>Afuera del Agua</option>
-                          </select>
+                          <div class="col">
+                                <select class="form-control" formControlName="Actividad">
+                                  <option disabled selected value="">Seleccione Actividad</option>
+                                  <option *ngFor="let i of ValoresActividad">{{ i }}</option>
+                                </select>
+                          </div>
+                          <div class="col">
+                                <select class="form-control" formControlName="Paises">
+                                  <option selected value="">Selecciona un Pais</option>
+                                  <option *ngFor="let i of Paises">{{i}}</option>
+                                  </select>
+                          </div>
+                          <div class="col-2">
+                                <select class="form-control" formControlName="Sexo">
+                                    <option disabled selected value="">Sexo</option>
+                                    <option *ngFor="let i of Sexo">{{i}}</option>
+
+                                  </select>
+                          </div>
+                          <div class="col-2">
+                                <select class="form-control" formControlName="Edad">
+                                    <option disabled selected value="">Edad</option>
+                                    <option *ngFor="let i of Edad">{{i}}</option>
+                                  </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                              <div class="col">
-                                                <div class="col">
-                                                  <select class="form-control" [(ngModel)]="ss">
-                                                    <option selected disabled>¿Ha sido necesaria intervencion fuera del puesto?</option>
-                                                    <option value="yes">Si</option>
-                                                    <option value="no">No</option>
-                                                  </select>
-                                                </div>
-                                                <br>
-                                                <div class="col" *ngIf="ss === 'yes' ">
-                                                    <select class="form-control" [(ngModel)]="desplazamiento_terrestre">
-                                                      <option selected disabled>¿Ha sido necesario un desplazamiento terrestre hacia la víctima?</option>
-                                                      <option value="yes">Si</option>
-                                                      <option value="no">No</option>
-                                                  </select>
-                                                  </div>
-                                                  <br>
-                                                  <div class="col" *ngIf="intervencion === 'yes' ">
-                                                    <select class="form-control" [(ngModel)]="desplazamiento_acuatico">
-                                                      <option selected disabled>¿Ha sido necesario un desplazamiento acuático hacia la víctima?</option>
-                                                      <option value="yes">Si</option>
-                                                      <option value="no">No</option>
-                                                  </select>
-                                                </div>
-                                                <br>
-                              </div>
-                              <div class="col">
-                                <div *ngIf="desplazamiento_terrestre === 'yes' && intervencion === 'yes' ">
-
-
-
-                                              <div class="col">
-                                                <select class="form-control">
-                                                  <option selected disabled>Tipo desplazamiento hacia la víctima</option>
-                                                  <option>A pie</option>
-                                                  <option>Afuera del Agua</option>
-                                                </select>
-                                              </div>
-                                              <br>
-
-
-                               </div>
-                              </div>
-                      </div>
-
-
-
-
-
-
-
-                  </form>
-
-              </div>
-
-
-
-
-
-              <div class="card-body Margenes">
-
-              <br>
-
-
-
-                            <!---->
-                            <div class="form-row" *ngIf="intervencion === 'yes' && desplazamiento_terrestre === 'yes' && desplazamiento_acuatico === 'yes' ">>
-
-                              <select class="form-control">
-                                    <option selected disabled>Distancia del Desplazamiento (metros)</option>
-                                    <option>0 - 25</option>
-                                    <option>25 - 50</option>
-                                    <option>50 - 100</option>
-                                    <option>100 - 200</option>
-                                    <option>Más de 200</option>
-                              </select>
-                              <select class="form-control">
-                                    <option selected disabled>¿A qué profundidad se encontraba la víctima?</option>
-                                    <option>Agua por encima de la Cintura</option>
-                                    <option>Agua por debajo de la Cintura</option>
-                              </select>
-                              <select class="form-control">
-                                    <option selected disabled>¿Qué materiales de apoyo se utilizaron?</option>
-                                    <option>Aletas</option>
-                                    <option>Brazo de Rescate</option>
-                                    <option>Boya Torpedo</option>
-                                    <option>Tabla de Rescate</option>
-                                    <option>Tirantes</option>
-                                    <option>Moto acuática</option>
-                                    <option>Embarcación</option>
-                                    <option>Otros</option>
-                                    <option>Sin Material</option>
-                              </select>
-                              <select class="form-control">
-                                    <option selected disabled>Estado del Accidentado</option>
-                                    <option>Consciente</option>
-                                    <option>Incosciente</option>
-                              </select>
-
-
-
+                        <br>
+                        <div class="form-row EsquemaMapa"><h1>MAPA</h1></div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col"></div>
+                            <div class="form-row">
+                                <div class="col"><button type="button" class="btn btn-primary" (click)="anteriorRegistrarIncedentes()">Atras</button></div>
+                                <div class="col"><button class="btn btn-primary btn-block" [disabled]="!RegistrarIncedentes2.valid">Guardar</button></div>
                             </div>
+                            <div class="col"></div>
+                        </div>
 
-                <div class="form-row">
-                  <div class="col"></div>
-                  <div class="col"><button class="btn btn-primary btn-block" type="submit">Continuar</button></div>
-                  <div class="col"></div>
+                      </form>
+                    </div>
                 </div>
-
                 </div>
               </div>
         </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="card">
+            <div class="card-body Margenes">
+              <div class="form-row">
+                <div class="col"></div>
+                <div class="col-auto">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                    </li>
+            </ul></div>
+            <div class="col"></div>
+          </div>
+              <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                      <div>
+                        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+                      </div>
+
+
+
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
 
 
     </div>

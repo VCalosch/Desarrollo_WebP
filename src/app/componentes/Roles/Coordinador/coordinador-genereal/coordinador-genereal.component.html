@@ -29,13 +29,13 @@
             <div class="card">
               <div class="card-body Margenes">
 
-                    <form>
+                    <form [formGroup]="SolicitarNuevaPlaya" (ngSubmit)="C_SolicitarNuevaPlaya()" [ngClass]="{'is-invalid': !SolicitarNuevaPlaya.valid && SolicitarNuevaPlaya.touched }">
                         <div class="form-row">
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Nombre de la Playa">
+                              <input type="text" class="form-control" placeholder="Nombre de la Playa" formControlName="NombrePlaya">
                             </div>
                             <div class="col">
-                              <input type="email" class="form-control"  placeholder="Correo Electronico">
+                              <input type="email" class="form-control"  placeholder="Correo Electronico" formControlName="CorreoElectronico" name="email" ngModel [email]="true">
                             </div>
                         </div>
 
@@ -43,10 +43,10 @@
 
                         <div class="form-row">
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Latitud">
+                              <input type="text" class="form-control" placeholder="Latitud" formControlName="Latitud">
                             </div>
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Longitud">
+                              <input type="text" class="form-control" placeholder="Longitud" formControlName="Longitud">
                             </div>
                             <div class="col">
                               <button type="submit" class="btn btn-primary btn-block">Mapa</button>
@@ -57,14 +57,14 @@
 
                         <div class="form-row">
                           <label for="exampleFormControlTextarea1">Comentarios:</label>
-                          <textarea class="form-control"  rows="3"></textarea>
+                          <textarea class="form-control"  rows="3" formControlName="Comentarios"></textarea>
                         </div>
                         <br>
                         <div class="form-row">
 
                           <div class="col"></div>
                           <div class="col-auto">
-                          <button type="submit" class="btn btn-primary btn-lg">Enviar Solicitud</button></div>
+                          <button type="submit" class="btn btn-primary btn-lg" [disabled]="!SolicitarNuevaPlaya.valid">Enviar Solicitud</button></div>
                           <div class="col"></div>
 
                         </div>
@@ -78,73 +78,71 @@
             <div class="card">
               <div class="card-body Margenes">
 
-                <div class="form-row">
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Nombre de Usuario">
+                <form [formGroup]="DarAltaNuevoUsuario" (ngSubmit)="C_DarAltaNuevoUsuario()" [ngClass]="{'is-invalid': !DarAltaNuevoUsuario.valid && DarAltaNuevoUsuario.touched }">
+                    <div class="form-row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="NombreUsuario">
+                        </div>
+                        <div class="col">
+                          <input type="password" class="form-control"  placeholder="Password" formControlName="Password">
+                        </div>
+                        <div class="col">
+                          <select  class="form-control" formControlName="RolUsuario">
+                            <option selected disabled value="">Rol de Usuario</option>
+                            <option *ngFor="let i of ValoresRol">{{ i }}</option>
+                          </select>
+                        </div>
+                        <div class="col">
+                          <select  class="form-control" formControlName="Sexo">
+                            <option selected disabled value="">Sexo</option>
+                            <option *ngFor="let i of Sexo">{{ i }}</option>
+                          </select>
+                        </div>
                     </div>
-                    <div class="col">
-                      <input type="password" class="form-control"  placeholder="Password">
+                    <br>
+
+                    <div class="form-row">
+                        <div class="col">
+                          <input type="email" class="form-control"  placeholder="Correo Electronico" formControlName="CorreoElectronico" name="correo" ngModel [email]="true">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Codigo" formControlName="Codigo">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Inicio Contrato - Ej: 21/01/2018" formControlName="InicioContrato">
+                        </div>
                     </div>
-                    <div class="col">
-                      <select  class="form-control">
-                        <option selected disabled>Rol de Usuario</option>
-                        <option>Encargado de Playa</option>
-                        <option>Socorrista</option>
-                      </select>
+
+                    <br>
+
+                    <div class="form-row">
+                      <label for="exampleFormControlTextarea1">Formacion:</label>
+                      <textarea class="form-control" rows="3" formControlName="Formacion"></textarea>
                     </div>
-                    <div class="col">
-                      <select  class="form-control">
-                        <option selected disabled>Sexo</option>
-                        <option>Hombre</option>
-                        <option>Mujer</option>
-                        <option>Otro</option>
-                      </select>
+
+                    <br>
+
+                    <div class="form-row">
+                      <label for="exampleFormControlTextarea1">Experiencia:</label>
+                      <textarea class="form-control" rows="3" formControlName="Experiencia"></textarea>
                     </div>
-                </div>
-                <br>
 
-                <div class="form-row">
-                    <div class="col">
-                      <input type="email" class="form-control"  placeholder="Correo Electronico">
+                    <br>
+
+                    <div class="form-row">
+                      <label for="exampleFormControlTextarea1">Comentarios:</label>
+                      <textarea class="form-control" rows="3" formControlName="Comentarios"></textarea>
                     </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Codigo">
+
+                    <br>
+
+                    <div class="form-row">
+                      <div class="col"></div>
+                      <div class="col-auto"><button type="submit" class="btn btn-primary btn-lg" [disabled]="!DarAltaNuevoUsuario.valid">Registrar</button></div>
+                      <div class="col"></div>
                     </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Inicio Contrato - Ej: 21/01/2018">
-                    </div>
-                </div>
 
-                <br>
-
-                <div class="form-row">
-                  <label for="exampleFormControlTextarea1">Formacion:</label>
-                  <textarea class="form-control"  rows="3"></textarea>
-                </div>
-
-                <br>
-
-                <div class="form-row">
-                  <label for="exampleFormControlTextarea1">Experiencia:</label>
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-
-                <br>
-
-                <div class="form-row">
-                  <label for="exampleFormControlTextarea1">Comentarios:</label>
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-
-                <br>
-
-                <div class="form-row">
-                  <div class="col"></div>
-                  <div class="col-auto"><button type="submit" class="btn btn-primary btn-lg">Registrar</button></div>
-                  <div class="col"></div>
-                </div>
-
-
+              </form>
               </div>
             </div>
 

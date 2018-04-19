@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
 
   guardarDatos(forms:any){
-    console.log("ngForm",forms)
+    console.log(forms.value);
   }
 
 
