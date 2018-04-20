@@ -111,6 +111,15 @@ RegistrarIncedentes:number=0;
     console.log(this.ActuacionesReactivas.value);
   }
 
+  DatosActivos(x:string){
+    this.ActuacionesActivas.controls['Actuacion'].setValue(x);
+    console.log(this.ActuacionesActivas.value);
+  }
+
+  DatosReactivos(x:string){
+    this.ActuacionesReactivas.controls['Actuacion'].setValue(x);
+    console.log(this.ActuacionesReactivas.value);
+  }
 
 
   }

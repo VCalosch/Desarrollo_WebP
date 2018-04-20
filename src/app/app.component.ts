@@ -13,7 +13,7 @@ export class AppComponent {
   lng: number = -3.782128;
   color: string = "red";
 
-  paths: number[]=[
+  paths: any[]=[
       { lat: 43.472077, lng: -3.780953 },
       { lat: 43.472739, lng: -3.781039 },
       { lat: 43.472498, lng: -3.780164 },
