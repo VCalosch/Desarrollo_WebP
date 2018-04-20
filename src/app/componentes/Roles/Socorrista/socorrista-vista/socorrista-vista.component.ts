@@ -25,6 +25,14 @@ export class SocorristaVistaComponent implements OnInit {
     'Actividad': new FormControl('', Validators.required)
 })
 
+this.ActuacionesActivas = new FormGroup({
+  'Actuacion': new FormControl('', Validators.required),
+})
+
+this.ActuacionesReactivas = new FormGroup({
+  'Actuacion': new FormControl('', Validators.required),
+})
+
 
 
 
@@ -43,6 +51,25 @@ this.Paises=this._selectsService.getPaises();
 
   Sexo:String[]=["Hombre", "Mujer", "Otro"];
   Edad:String[]=["0-1", "1-4", "5-9", "10-14", "15-19", "20-24", "25-44", "45+"];
+
+  ActuacionesActivas1:String[]=["COLOCAR-CAMBIAR BANDERA DE ESTADO MAR", "DETECTAR-MARCAR LUGARES PELIGROSOS", "REALIZAR VIGILANCIA A GRUPOS ESPECIALES",
+                               "RETIRAR OBJETOS PELIGROSOS EN ORILLA", "AVISO A PROFESORES DE ACTIVIDADES"];
+
+
+  ActuacionesActivas2:String[]=["AVISOS COLECTIVOS", "AVISOS GENERALES POR MEGAFONÍA RELACIONADOS CON EL", "RETIRAR ANIMALES MUERTOS EN AGUA-ORILLA",
+                                "DETECTAR-MARCAR LUGARES PELIGROSOS"];
+
+ActuacionesReactivas1:String[]=["INFORMAR DE ZONAS NO APTAS PARA BAÑO", "INFORMAR SOBRE HORARIO DE MAREAS", "UTILIZAR PULSERAS DE IDENTIFICACION",
+                               "AVISO A PERSONAS DE RIESGO POTENCIAL", "INFORMAR DE LA ZONA EXTERNA DE BAÑO", "NO NADAR FUERA DE ZONA VIGILADA",
+                               "EVITAR ACTIVIDAD PELIGROSA EN ZONA BAÑO", "NO UTILIZAR MATERIALES PELIGROSOS", "NO REALIZAR JUEGOS DESCONTROLADOS",
+                               "NO SALTAR EN ZONA POCO PROFUNDA", "NO DEJAR SOLO A UN MENOR", "INFORMAR SOBRE CORRIENTES CON RIESGOS",
+                               "INFORMAR SOBRE MEDUSAS EN ZONA DE BAÑO", "NO UTILIZAR MATERIALES PELIGROSOS", "NO REALIZAR JUEGOS DESCONTROLADOS"];
+
+ ActuacionesReactivas2:String[]=["INFORMAR SOBRE PROHIBICIÓN DE PERROS", "INFORMAR DEL INDICE DE RIESGO SOLAR", "NO ALEJARSE EXCESIVAMENTE DE LA ORILLA",
+                              "EVITAR PESCA EN ZONA DE BAÑO", "NO NADAR FUERA DEL BALIZAMIENTO", "NO NADAR EN ZONAS DE EMBARCACIONES", "NO ENTRAR AL AGUA SIN CONTROL",
+                              "NO REALIZAR APNEAS PROLONGADAS", "NO USAR CHANCLAS O CALZADO ADECUADO", "NO TENER OBJETOS EN LA BOCA", "INFORMAR SOBRE TEMPERATURA DEL AGUA",
+                              "INFORMAR SOBRE OLEAJE PELIGROSO", "NO REALIZAR ZAMBULLIDAS PELIGROSAS", "EVITAR BAÑO SOLITARIO DE NIÑOS PEQUEÑOS"];
+
 
 //---------------------Formulario: REGISTRAR INCIDENTES/INTERVENCIONES---------------------------------------------------------
 RegistrarIncedentes:number=0;
@@ -72,7 +99,18 @@ RegistrarIncedentes:number=0;
     console.log(this.RegistrarIncedentes2.value);
   }
 
+//------------------Formulario: AGREGAR AVISOS PREVENTIVOS------------------------------------------------------------
 
+  ActuacionesActivas:FormGroup;
+  C_ActuacionesActivas(){
+    console.log(this.ActuacionesActivas.value);
   }
 
-}
+  ActuacionesReactivas:FormGroup;
+  C_ActuacionesReactivas(){
+    console.log(this.ActuacionesReactivas.value);
+  }
+
+
+
+  }

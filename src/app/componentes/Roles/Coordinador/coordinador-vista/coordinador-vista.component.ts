@@ -8,7 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./coordinador-vista.component.css']
 })
 export class CoordinadorVistaComponent implements OnInit {
-
+  title: string = 'My first AGM project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
   constructor() {
 
     this.Paso2 = new FormGroup({
@@ -316,6 +318,7 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
     console.log(this.Paso2.value);
     this.siguiente();
   }
+
 
 
 }

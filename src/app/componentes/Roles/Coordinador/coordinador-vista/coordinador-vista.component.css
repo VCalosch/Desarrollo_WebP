@@ -3,3 +3,7 @@
 }
 
 .MargenesJumpIn{margin-left: 100px; margin-right: 100px;}
+
+agm-map {
+  height: 300px;
+}

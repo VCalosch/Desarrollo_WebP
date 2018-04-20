@@ -22,7 +22,8 @@ import { SocorristaVistaComponent } from './componentes/Roles/Socorrista/socorri
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { ResetPasswordComponent } from './componentes/reset-password/reset-password.component';
 
-
+//Mapas
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -46,7 +47,10 @@ import { ResetPasswordComponent } from './componentes/reset-password/reset-passw
     BrowserModule,
     FormsModule,
     APP_ROUTING,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyA3d6OC5uV4aQlVClt97CEULYxOvY7b1GU'
+})
   ],
   providers: [SelectsService],
   bootstrap: [AppComponent]
