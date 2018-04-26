@@ -11,6 +11,7 @@ import { CoordinadorGenerealComponent } from './componentes/roles/coordinador/co
 import { CoordinadorVistaComponent } from './componentes/Roles/Coordinador/coordinador-vista/coordinador-vista.component';
 import { EncargadoVistaComponent } from './componentes/Roles/Encargado/encargado-vista/encargado-vista.component';
 import { SocorristaVistaComponent } from './componentes/Roles/Socorrista/socorrista-vista/socorrista-vista.component';
+import { MapaComponent } from './componentes/mapa/mapa.component';
 
 
 //Pruebas
@@ -27,6 +28,7 @@ const APP_ROUTES: Routes = [
   { path: 'socorristaVista', component: SocorristaVistaComponent },
   { path: 'prueba', component: PruebaComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'mapa', component: MapaComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

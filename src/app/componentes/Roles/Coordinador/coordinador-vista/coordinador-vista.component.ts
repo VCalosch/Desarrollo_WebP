@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Marcador } from 'app/classes/marcador.class';
 
 @Component({
   selector: 'app-coordinador-vista',
@@ -22,7 +23,7 @@ export class CoordinadorVistaComponent implements OnInit {
       'Provincia': new FormControl('', Validators.required),
       'CCAA': new FormControl('', Validators.required),
       'Longitud': new FormControl('', Validators.required),
-      'Anchura': new FormControl('', Validators.required)
+      'Latitud': new FormControl('', Validators.required)
   })
 
   this.ModificarPlaya2 = new FormGroup({
@@ -102,6 +103,9 @@ this.ModificarPlaya8 = new FormGroup({
   'DistanciaPuertoPlaya': new FormControl('', Validators.required),
   'ObervacionesGenerales': new FormControl('', Validators.required)
 })
+
+
+
 
   }
 
@@ -283,6 +287,7 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
       this.ModificarPlayasiguiente();
     }
 
+
     ModificarPlaya:number=0;
 
     ModificarPlayasiguiente(){
@@ -318,6 +323,31 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
     console.log(this.Paso2.value);
     this.siguiente();
   }
+
+  /*------------------------MAPA--------------------------------------------------*/
+  /*marcadores:Marcador[]=[];
+
+  marcadorRiesgo:number=1;
+  placeHolderLatitud:string='Latitud';
+  placeHolderLongitud:string='Longitud';
+
+  setValue(evento){
+    const coords = evento.coords;
+    if(this.marcadorRiesgo == 1){
+        const nuevoMarcador = new Marcador(coords.lat, coords.lng);
+        this.marcadores.push(nuevoMarcador);
+        this.ModificarPlaya1.controls['Latitud'].setValue(evento);
+        this.ModificarPlaya1.controls['Longitud'].setValue(evento);
+        this.marcadorRiesgo = 0;
+
+        this.placeHolderLatitud = coords.lat;
+        this.placeHolderLongitud = coords.lng;
+      }
+  }
+
+  zoom: number = 17;
+  lat: number = 43.473161;
+  lng: number = -3.782128;*/
 
 
 

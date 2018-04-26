@@ -1,13 +1,9 @@
+<div [ngStyle]="{'min-height': clientHeight + 'px', 'margin-bottom': '-200px'}">
 <app-navbar></app-navbar>
 <main role="main">
 <router-outlet></router-outlet>
 </main>
-<!--<app-prueba></app-prueba>-->
-<!--<app-footer></app-footer>-->
-
-
-<!--<div style="margin-top: 100px; margin-left: 100px;">
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-polygon [paths]="paths" [fillColor]="color"></agm-polygon>
-</agm-map>
-</div>-->
+<div style="height: 200px"></div>
+</div>
+<!--<app-prueba></app-prueba>
+<app-footer></app-footer>-->

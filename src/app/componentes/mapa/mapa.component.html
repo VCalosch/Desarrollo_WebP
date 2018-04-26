@@ -1,0 +1,11 @@
+<div style="margin-top: 100px; margin-left: 100px;">
+<agm-map (mapClick)="setValue( $event )" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker>
+
+    <agm-polygon [paths]="paths" [fillColor]="color"></agm-polygon>
+    <agm-polyline (lineClick)="ff($event)">
+
+    </agm-polyline>
+</agm-map>
+</div>
+<button (click)="ss($xx)">ss</button>

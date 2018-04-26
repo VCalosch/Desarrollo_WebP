@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Marcador } from 'app/classes/marcador.class';
 
 @Component({
   selector: 'app-coordinador-genereal',
@@ -58,5 +59,30 @@ export class CoordinadorGenerealComponent implements OnInit {
    console.log(this.DarAltaNuevoUsuario.value);
  }
 
+ //-------------------------------MAPA----------------------------------------------
+
+ marcadores:Marcador[]=[];
+
+ marcadorRiesgo:number=1;
+ placeHolderLatitud:string='Latitud';
+ placeHolderLongitud:string='Longitud';
+
+ setValue(evento){
+   const coords = evento.coords;
+   if(this.marcadorRiesgo == 1){
+       const nuevoMarcador = new Marcador(coords.lat, coords.lng);
+       this.marcadores.push(nuevoMarcador);
+       this.SolicitarNuevaPlaya.controls['Latitud'].setValue(evento);
+       this.SolicitarNuevaPlaya.controls['Longitud'].setValue(evento);
+       this.marcadorRiesgo = 0;
+
+       this.placeHolderLatitud = coords.lat;
+       this.placeHolderLongitud = coords.lng;
+     }
+ }
+
+ zoom: number = 10;
+ lat: number = 43.473161;
+ lng: number = -3.782128;
 
 }

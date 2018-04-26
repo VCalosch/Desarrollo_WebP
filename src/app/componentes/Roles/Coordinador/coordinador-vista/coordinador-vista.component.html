@@ -26,9 +26,15 @@
                                 </div>
                                 <br>
                                 <div class="form-row">
+                                  <agm-map (mapClick)="setValue( $event )" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                                    <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker>
+                                  </agm-map>
+                                </div>
+                                <br>
+                                <div class="form-row">
                                     <div class="col-1"></div>
-                                    <div class="col"><input class="form-control" formControlName="Longitud" placeholder="Longitud"></div>
-                                    <div class="col"><input class="form-control" formControlName="Anchura" placeholder="Anchura"></div>
+                                    <div class="col"><input class="form-control" placeholder="{{ placeHolderLatitud }}" disabled></div>
+                                    <div class="col"><input class="form-control" placeholder="{{ placeHolderLongitud }}" disabled></div>
                                     <div class="col-1"></div>
                                 </div>
                                 <br>

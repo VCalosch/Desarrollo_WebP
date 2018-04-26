@@ -112,7 +112,7 @@ RegistrarIncedentes:number=0;
   }
 
   DatosActivos(x:string){
-    this.ActuacionesActivas.controls['Actuacion'].setValue(x);
+
     console.log(this.ActuacionesActivas.value);
   }
 

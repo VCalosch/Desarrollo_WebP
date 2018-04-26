@@ -24,6 +24,7 @@ import { ResetPasswordComponent } from './componentes/reset-password/reset-passw
 
 //Mapas
 import { AgmCoreModule } from '@agm/core';
+import { MapaComponent } from './componentes/mapa/mapa.component';
 
 
 
@@ -40,6 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     SocorristaVistaComponent,
     PruebaComponent,
     ResetPasswordComponent,
+    MapaComponent,
 
 
   ],
