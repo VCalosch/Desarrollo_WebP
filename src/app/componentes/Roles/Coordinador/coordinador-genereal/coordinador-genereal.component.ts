@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Marcador } from 'app/classes/marcador.class';
 
+
 @Component({
   selector: 'app-coordinador-genereal',
   templateUrl: './coordinador-genereal.component.html',
@@ -72,8 +73,8 @@ export class CoordinadorGenerealComponent implements OnInit {
    if(this.marcadorRiesgo == 1){
        const nuevoMarcador = new Marcador(coords.lat, coords.lng);
        this.marcadores.push(nuevoMarcador);
-       this.SolicitarNuevaPlaya.controls['Latitud'].setValue(evento);
-       this.SolicitarNuevaPlaya.controls['Longitud'].setValue(evento);
+       this.SolicitarNuevaPlaya.controls['Latitud'].setValue(coords.lat);
+       this.SolicitarNuevaPlaya.controls['Longitud'].setValue(coords.lng);
        this.marcadorRiesgo = 0;
 
        this.placeHolderLatitud = coords.lat;

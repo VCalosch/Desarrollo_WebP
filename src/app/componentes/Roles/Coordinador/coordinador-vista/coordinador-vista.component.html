@@ -1,4 +1,4 @@
- <div class="container top-container">
+  <div class="container top-container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Modificar Playa</a>
@@ -514,6 +514,190 @@
                               $('#myModal').on('shown.bs.modal', function () {
                               $('#myInput').trigger('focus')})
                             </script>
+
+
+                  <!--<form>
+                      <div class="form-row form-inline">
+                        <label>Municipio:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>Provincia:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>CC AA:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                      </div>
+                      <br>
+                      <div class="form-row form-inline">
+                        <label>Latitud:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>Longitud:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                      </div>
+                      <br><hr><br>
+                      <div class="form-row form-inline">
+                        <label>Pendiente:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>Grado de Ocupación:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                      </div>
+                      <br>
+                      <div class="form-row form-inline">
+                        <label>Paseo Maritimo:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>Fachada Litoral:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                      </div>
+                      <div class="form-row form-inline">
+                        <label>Grado de Urbanizacion:</label>
+                        <input type="text" class="form-control mx-sm-2" placeholder="" disabled>
+                        <label>Descripción de Playa:</label>
+                        <textarea class="form-control mx-sm-2" rows="3" disabled></textarea>
+                      </div>
+                      <hr>
+                  </form>-->
+                  <form>
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Municipio</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya1.value.Municipio}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Provincia</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya1.value.Provincia}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>CC AA</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya1.value.CCAA}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Latitud</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya1.value.Latitud}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Longitud</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya1.value.Longitud}}" disabled>
+                      </div>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Pendiente</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya2.value.Pendiente}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Grado de Ocupacion</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya2.value.GradoOcupacion}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Grado de Urbanizacion</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya2.value.GradoUrbanizacion}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Paseo Maritimo</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya2.value.PaseoMaritimo}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Fachada Litoral</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya2.value.FachadaLitoral}}" disabled>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Descripción de Playa</label>
+                        <textarea class="form-control" rows="3" disabled>{{  ModificarPlaya2.value.DescripcionPlaya}}</textarea>
+                      </div>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Morfologia</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya3.value.Morfologia}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Composición</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya3.value.Composicion}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Tipo de Arena</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya3.value.TipoArena}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Tipo de Oleaje</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya3.value.TipoOleaje}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Nivel de Viento</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya3.value.NivelViento}}" disabled>
+                      </div>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Carretera más Proxima</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya6.value.CarreteraProxima}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Tipo de Aparcamiento</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya6.value.Aparcamiento}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Autobus</label>
+                        <input type="text" class="form-control" placeholder="{{  ModificarPlaya6.value.AutoBus}}" disabled>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Observaciones</label>
+                        <textarea class="form-control" rows="3" disabled>{{ModificarPlaya6.value.Observaciones}}</textarea>
+                      </div>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Nombre de Hospital</label>
+                        <input type="text" class="form-control" placeholder="{{ModificarPlaya7.value.NombreHospital}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Longitud</label>
+                        <input type="text" class="form-control" placeholder="{{ModificarPlaya7.value.Longitud}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Latitud</label>
+                        <input type="text" class="form-control" placeholder="{{ModificarPlaya7.value.Latitud}}" disabled>
+                      </div>
+                    </div>
+
+                    <br><hr><br>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Puerto Deportivo</label>
+                        <input type="text" class="form-control" placeholder="{{ModificarPlaya8.value.PuertoDeportivo}}" disabled>
+                      </div>
+                      <div class="col">
+                        <label>Distancia Puerto de Playa</label>
+                        <input type="text" class="form-control" placeholder="{{ModificarPlaya8.value.DistanciaPuertoPlaya}}" disabled>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Observaciones Genereales</label>
+                        <textarea class="form-control" rows="3" disabled>{{ModificarPlaya8.value.ObervacionesGenerales}}</textarea>
+                      </div>
+                    </div>
+
+
+                  </form>
 
                               <!--MODAL-->
                           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

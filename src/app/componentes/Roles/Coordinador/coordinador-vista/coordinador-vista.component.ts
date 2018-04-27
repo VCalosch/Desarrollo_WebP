@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Marcador } from 'app/classes/marcador.class';
@@ -9,9 +9,7 @@ import { Marcador } from 'app/classes/marcador.class';
   styleUrls: ['./coordinador-vista.component.css']
 })
 export class CoordinadorVistaComponent implements OnInit {
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+
   constructor() {
 
     this.Paso2 = new FormGroup({
@@ -325,7 +323,7 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
   }
 
   /*------------------------MAPA--------------------------------------------------*/
-  /*marcadores:Marcador[]=[];
+  marcadores:Marcador[]=[];
 
   marcadorRiesgo:number=1;
   placeHolderLatitud:string='Latitud';
@@ -336,8 +334,8 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
     if(this.marcadorRiesgo == 1){
         const nuevoMarcador = new Marcador(coords.lat, coords.lng);
         this.marcadores.push(nuevoMarcador);
-        this.ModificarPlaya1.controls['Latitud'].setValue(evento);
-        this.ModificarPlaya1.controls['Longitud'].setValue(evento);
+        this.ModificarPlaya1.controls['Latitud'].setValue(coords.lat);
+        this.ModificarPlaya1.controls['Longitud'].setValue(coords.lng);
         this.marcadorRiesgo = 0;
 
         this.placeHolderLatitud = coords.lat;
@@ -347,7 +345,7 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
 
   zoom: number = 17;
   lat: number = 43.473161;
-  lng: number = -3.782128;*/
+  lng: number = -3.782128;
 
 
 
