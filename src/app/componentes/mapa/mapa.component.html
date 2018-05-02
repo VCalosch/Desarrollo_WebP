@@ -7,11 +7,13 @@
 </div>
 <button (click)="ss($xx)">ss</button>-->
 
+
 <div style="margin-top: 100px; margin-left: 100px;">
+  <div *ngIf="AgregarPoligono==1"><button type="submit" class="btn btn-primary" (click)="CerrarPoligono()">Cerrar Poligono</button></div>
+  <br>
 <agm-map (mapClick)="poligono( $event )" [latitude]="lats" [longitude]="lngs" [zoom]="zoom">
   <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker>
 
-    <div *ngIf="contador==12"><agm-polygon [paths]="numeros" [fillColor]="color"></agm-polygon></div>
+    <div *ngIf="contador==1"><agm-polygon [paths]="numeros" [fillColor]="color"></agm-polygon></div>
 </agm-map>
 </div>
-<button (click)="ss($xx)">ss</button>

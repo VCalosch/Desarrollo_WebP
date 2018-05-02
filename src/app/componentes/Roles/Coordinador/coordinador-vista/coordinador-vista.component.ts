@@ -329,24 +329,85 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
   placeHolderLatitud:string='Latitud';
   placeHolderLongitud:string='Longitud';
 
-  setValue(evento){
-    const coords = evento.coords;
-    if(this.marcadorRiesgo == 1){
-        const nuevoMarcador = new Marcador(coords.lat, coords.lng);
-        this.marcadores.push(nuevoMarcador);
-        this.ModificarPlaya1.controls['Latitud'].setValue(coords.lat);
-        this.ModificarPlaya1.controls['Longitud'].setValue(coords.lng);
-        this.marcadorRiesgo = 0;
+  //Poligono
+  contador:number=0;
+  numeros:any[]=[];
+  list:object[lat, lng]=[];
 
-        this.placeHolderLatitud = coords.lat;
-        this.placeHolderLongitud = coords.lng;
-      }
+  setValue(evento){
+      if(this.marcadorRiesgo == 1 && this.isMarcador==1){
+          const coords = evento.coords;
+          const nuevoMarcador = new Marcador(coords.lat, coords.lng);
+          this.marcadores.push(nuevoMarcador);
+          this.ModificarPlaya1.controls['Latitud'].setValue(coords.lat);
+          this.ModificarPlaya1.controls['Longitud'].setValue(coords.lng);
+          this.marcadorRiesgo = 0;
+          this.riesgoPoligono=false;
+          this.eliminarMarcador_btn=1;
+
+          this.placeHolderLatitud = coords.lat;
+          this.placeHolderLongitud = coords.lng;
+        }
+
+    else if(this.isPoligono==1){
+      this.marcadorRiesgo = 0;
+      this.eliminarMarcador_btn=0;
+      this.cerrarPoligono_btn=1;
+
+      this.list = {lat: evento.coords.lat, lng: evento.coords.lng};
+      this.numeros.push(this.list);
+
+
+      /*const nuevoMarcador = new Marcador(evento.coords.lat, evento.coords.lng);
+      this.marcadores.push(nuevoMarcador);*/
+    }
+  }
+
+  CerrarPoligono(){
+    this.contador=1;
+    this.cerrarPoligono_btn=0;
+
+  }
+
+  EliminarMarcador(){
+    this.marcadorRiesgo = 1;
+    console.log(this.marcadores.length);
+    this.marcadores.pop();
+    this.riesgoPoligono=true;
+    this.eliminarMarcador_btn=0;
+
+    this.ModificarPlaya1.controls['Latitud'].setValue(null);
+    this.ModificarPlaya1.controls['Longitud'].setValue(null);
+
   }
 
   zoom: number = 17;
   lat: number = 43.473161;
   lng: number = -3.782128;
 
+  /*--------------CAMBIO ENTRE MARCADOR Y POLIGONO------------------------------------------------------------*/
+  isMarcador:number=0;
+  isPoligono:number=0;
+  agmMarker:boolean = false;
+  riesgoMarker:boolean=true;
+  riesgoPoligono:boolean=true;
+  Mapa(event){
+    if(event==11){
+      this.riesgoPoligono=false;
+      this.isMarcador = 1;
+      this.agmMarker=true;
+      console.log("Lo toma como un Marker");
+    }
 
+    if(event==22){
+      this.riesgoMarker=false;
+      this.isPoligono=1;
+      console.log("Lo toma como Poligono");
+      console.log(this.marcadores.length);
+    }
+  }
+
+  cerrarPoligono_btn:number=0;
+  eliminarMarcador_btn:number=0;
 
 }

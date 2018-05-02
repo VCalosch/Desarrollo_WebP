@@ -15,6 +15,8 @@ export class MapaComponent implements OnInit {
   lngs: number = -3.782128;
   color: string = "red";
 
+
+
   v1:number;
 
   numbers1: any=[
@@ -27,9 +29,6 @@ export class MapaComponent implements OnInit {
     marcadores:Marcador[]=[];
 
   constructor() {
-
-    const nuevoMarcador = new Marcador(43.473161, -3.782128);
-    this.marcadores.push(nuevoMarcador);
 
   }
 
@@ -52,34 +51,39 @@ export class MapaComponent implements OnInit {
     console.log(event);
   }*/
 
-  puntos:any=[];
+
   contador:number=0;
-  latitud:number;
-  longitud:number;
-
-  lista:number[]=[];
-
-
   paths:number[]=[];
 
   numeros:any[]=[];
   list:object[lat, lng]=[];
+  marcadores:Marcador[]=[];
+  AgregarPoligono:number=0;
 
   poligono(evento){
+    this.AgregarPoligono=1;
 
-  /*this.numeros=[
-    { lat: evento.coords.lat, lng: evento.coords.lng },
-    { lat: 43.472739, lng: -3.781039 }
-  ];*/
-
-
-  this.list = {lat: evento.coords.lat, lng: evento.coords.lng};
-  this.numeros.push(this.list);
-  console.log(this.numeros);
-
-  this.contador++;
+    this.list = {lat: evento.coords.lat, lng: evento.coords.lng};
+    this.numeros.push(this.list);
+    console.log(this.numeros);
 
 
+    const nuevoMarcador = new Marcador(evento.coords.lat, evento.coords.lng);
+    this.marcadores.push(nuevoMarcador);
+
+
+  }
+
+  CerrarPoligono(){
+    this.contador=1;
+    this.AgregarPoligono=0;
+  }
+
+
+/*this.numeros=[
+  { lat: evento.coords.lat, lng: evento.coords.lng },
+  { lat: 43.472739, lng: -3.781039 }
+];*/
 
     /*this.latitud=evento.coords.lat;
     this.longitud=evento.coords.lng;
@@ -112,6 +116,6 @@ export class MapaComponent implements OnInit {
           { lat: 43.472023, lng: -3.780363 }
         ];
     }*/
-  }
+
 
 }

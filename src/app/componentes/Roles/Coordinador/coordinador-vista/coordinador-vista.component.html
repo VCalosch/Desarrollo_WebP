@@ -25,16 +25,65 @@
                                     <div class="col"><input class="form-control" formControlName="CCAA" placeholder="CC AA:"></div>
                                 </div>
                                 <br>
+
+
+
+
+
+
+
+
+
+                                <div class="form-row"><div class="col"></div>
+                                <div class="btn-group col-auto" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary" (click)="Mapa( 11 )" [disabled]="!riesgoMarker">Marcador</button>
+                                    <button type="button" class="btn btn-secondary" (click)="Mapa( 22 )" [disabled]="!riesgoPoligono">Polígono</button>
+                                </div>
+                                <div class="col">
+                                <button type="button" class="btn btn-secondary btn-sm float-right" *ngIf="cerrarPoligono_btn==1" (click)="CerrarPoligono()">Cerrar Poligono</button>
+                                <button type="button" class="btn btn-secondary btn-sm float-right" *ngIf="eliminarMarcador_btn==1" (click)="EliminarMarcador()">Eliminar Marcador</button>
+                                </div></div>
+
+
                                 <div class="form-row">
+
                                   <agm-map (mapClick)="setValue( $event )" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-                                    <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker>
+
+                                    <div *ngIf="agmMarker" ><agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng"></agm-marker></div>
+                                    <div *ngIf="contador==1"><agm-polygon [paths]="numeros" [fillColor]="color"></agm-polygon></div>
+
+
                                   </agm-map>
                                 </div>
                                 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <div class="form-row">
                                     <div class="col-1"></div>
-                                    <div class="col"><input class="form-control" placeholder="{{ placeHolderLatitud }}" disabled></div>
-                                    <div class="col"><input class="form-control" placeholder="{{ placeHolderLongitud }}" disabled></div>
+                                    <div class="col"><input class="form-control" placeholder="{{ ModificarPlaya1.value.Latitud }}" disabled></div>
+                                    <div class="col"><input class="form-control" placeholder="{{ ModificarPlaya1.value.Longitud }}" disabled></div>
                                     <div class="col-1"></div>
                                 </div>
                                 <br>
@@ -724,12 +773,6 @@
                         </div>
                 </div>
             </div>
-
-
-
-
-
-
 
 
 
