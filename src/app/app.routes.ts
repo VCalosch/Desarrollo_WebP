@@ -22,7 +22,7 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
 
   //Roles
-  { path: 'coordinadorGenereal', component: CoordinadorGenerealComponent },
+  { path: 'coordinadorGeneral', component: CoordinadorGenerealComponent },
   { path: 'coordinadorVista', component: CoordinadorVistaComponent },
   { path: 'encargadoVista', component: EncargadoVistaComponent },
   { path: 'socorristaVista', component: SocorristaVistaComponent },

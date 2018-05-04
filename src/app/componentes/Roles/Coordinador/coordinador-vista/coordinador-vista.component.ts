@@ -154,15 +154,6 @@ ValoresAparcamientoModo:String[] = ["Libre", "Privado"];
 
 //----------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
   Paso1:Object={
     Municipio: null,
     Provincia: null,
@@ -289,7 +280,7 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
     ModificarPlaya:number=0;
 
     ModificarPlayasiguiente(){
-      if(this.ModificarPlaya<6)
+      if(this.ModificarPlaya<7)
       this.ModificarPlaya = this.ModificarPlaya+1;
     console.log(this.ModificarPlaya);
     }
@@ -344,22 +335,15 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
           this.marcadorRiesgo = 0;
           this.riesgoPoligono=false;
           this.eliminarMarcador_btn=1;
-
           this.placeHolderLatitud = coords.lat;
           this.placeHolderLongitud = coords.lng;
         }
 
     else if(this.isPoligono==1){
-      this.marcadorRiesgo = 0;
-      this.eliminarMarcador_btn=0;
       this.cerrarPoligono_btn=1;
-
       this.list = {lat: evento.coords.lat, lng: evento.coords.lng};
       this.numeros.push(this.list);
-
-
-      /*const nuevoMarcador = new Marcador(evento.coords.lat, evento.coords.lng);
-      this.marcadores.push(nuevoMarcador);*/
+      console.log(this.numeros);
     }
   }
 
@@ -381,6 +365,14 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
 
   }
 
+  EliminarPoligono(){
+    this.numeros.length = 0;
+    this.contador=0;
+    this.riesgoMarker=true;
+    this.isPoligono=0;
+
+  }
+
   zoom: number = 17;
   lat: number = 43.473161;
   lng: number = -3.782128;
@@ -396,18 +388,24 @@ ValoresDireccion:String[] = ["Norte(N)", "Nor-noroeste(NNO)", "Noroeste(NO)", "O
       this.riesgoPoligono=false;
       this.isMarcador = 1;
       this.agmMarker=true;
-      console.log("Lo toma como un Marker");
+      this.marcadorRiesgo=1;
+
     }
 
     if(event==22){
+      this.agmMarker=false;
       this.riesgoMarker=false;
       this.isPoligono=1;
-      console.log("Lo toma como Poligono");
-      console.log(this.marcadores.length);
+
+      this.marcadorRiesgo = 0;
+      this.isMarcador = 0;
+      this.eliminarMarcador_btn=0;
     }
   }
 
   cerrarPoligono_btn:number=0;
   eliminarMarcador_btn:number=0;
 
+  color:string='red';
+  MapID:string='satellite';
 }
